@@ -1,19 +1,5 @@
-/* Inter Variable Font - Local */
-@font-face {
-	font-family: 'Inter';
-	src: url('/fonts/InterVariable.ttf') format('truetype-variations');
-	font-weight: 100 900;
-	font-style: normal;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Inter';
-	src: url('/fonts/InterVariable-Italic.ttf') format('truetype-variations');
-	font-weight: 100 900;
-	font-style: italic;
-	font-display: swap;
-}
+/* Inter Font - Google Fonts CDN (faster loading, smaller bundle) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 /* Reset & Base */
 * {
