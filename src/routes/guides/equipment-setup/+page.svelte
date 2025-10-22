@@ -1,6 +1,7 @@
 <script>
 	import ProtocolLayout from '$lib/components/ProtocolLayout.svelte';
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
+	import Term from '$lib/components/Term.svelte';
 	import { unitSystem } from '$lib/stores/units';
 	import { currency } from '$lib/stores/currency';
 	import { convertTemp } from '$lib/utils/unitConversions';
@@ -15,7 +16,7 @@
 	const introColumns = [
 		'Starting your plant tissue culture journey doesn\'t require expensive laboratory equipment. With the right affordable alternatives and proper techniques, you can create a highly effective home setup that produces professional-quality results.',
 		'This guide provides detailed equipment alternatives, setup instructions, and cost comparisons. You\'ll learn how to build a functional tissue culture lab for under $800—a 95% cost reduction compared to professional setups while maintaining effectiveness.',
-		'The key to success lies not in expensive equipment, but in understanding proper sterile technique, maintaining consistent environmental conditions, and following proven protocols.'
+		'The key to success lies not in expensive equipment, but in understanding proper <Term abbr="aseptic technique" />, maintaining consistent environmental conditions, and following proven protocols.'
 	];
 	const source = '';
 </script>
@@ -37,9 +38,9 @@
 			<h3>Step 2: Install Equipment</h3>
 			<ol>
 				<li>Set up work surface at comfortable height</li>
-				<li>Position Still Air Box with easy access</li>
+				<li>Position <Term abbr="SAB" /> with easy access</li>
 				<li>Install LED grow lights with timer</li>
-				<li>Arrange sterilization equipment nearby</li>
+				<li>Arrange <Term abbr="sterilization" /> equipment nearby</li>
 			</ol>
 			
 			<h3>Step 3: Prepare Storage Solutions</h3>
@@ -60,8 +61,8 @@
 			
 			<h3>Step 5: Test Your Setup</h3>
 			<ol>
-				<li>Practice sterile technique in Still Air Box</li>
-				<li>Test pressure cooker sterilization cycle</li>
+				<li>Practice <Term abbr="aseptic technique" /> in <Term abbr="SAB" /></li>
+				<li>Test pressure cooker <Term abbr="sterilization" /> cycle</li>
 				<li>Verify temperature control in growing area</li>
 				<li>Confirm lighting timer functionality</li>
 			</ol>
@@ -82,12 +83,12 @@
 					<tr>
 						<td><strong>1. Sterile Work Environment</strong></td>
 						<td>
-							<strong>Laminar Flow Hood</strong><br>
+							<strong><Term abbr="laminar flow hood" /></strong><br>
 							{convertPriceRange(3000, 10000, $currency)}<br>
 							<span class="detail">• HEPA filtration<br>• Positive pressure barrier</span>
 						</td>
 						<td class="home-alt">
-							<strong>Still Air Box (SAB)</strong><br>
+							<strong><Term abbr="SAB" /> (Still Air Box)</strong><br>
 							{convertPriceRange(20, 50, $currency)}<br>
 							<span class="detail">
 								• Plastic container with armholes<br>
@@ -97,11 +98,11 @@
 						</td>
 					</tr>
 					<tr>
-						<td><strong>2. Sterilization Equipment</strong></td>
+						<td><strong>2. <Term abbr="sterilization" /> Equipment</strong></td>
 						<td>
-							<strong>Autoclave</strong><br>
+							<strong><Term abbr="autoclave" /></strong><br>
 							{convertPriceRange(2000, 15000, $currency)}<br>
-							<span class="detail">• High-pressure steam sterilization</span>
+							<span class="detail">• High-pressure steam <Term abbr="sterilization" /></span>
 						</td>
 						<td class="home-alt">
 							<strong>Digital Pressure Cooker</strong><br>
@@ -114,7 +115,7 @@
 						</td>
 					</tr>
 					<tr>
-						<td><strong>3. Tool Sterilization</strong></td>
+						<td><strong>3. Tool <Term abbr="sterilization" /></strong></td>
 						<td>
 							<strong>Dry Heat Sterilizer</strong><br>
 							{convertPriceRange(500, 2000, $currency)}
@@ -123,7 +124,7 @@
 							<strong>Butane Torch</strong><br>
 							{convertPriceRange(15, 30, $currency)}<br>
 							<span class="detail">
-								• Instant sterilization<br>
+								• Instant <Term abbr="sterilization" /><br>
 								• Heat to red-hot, then cool<br>
 								<strong>Usage:</strong> Flame sterilize metal tools between uses
 							</span>
@@ -191,9 +192,9 @@
 		<div>
 			<h3>Equipment Safety</h3>
 			<ul>
-				<li>Never leave pressure cooker unattended during sterilization</li>
+				<li>Never leave pressure cooker unattended during <Term abbr="sterilization" /></li>
 				<li>Allow torch-heated tools to cool completely before handling</li>
-				<li>Regularly inspect Still Air Box for cracks or damage</li>
+				<li>Regularly inspect <Term abbr="SAB" /> for cracks or damage</li>
 				<li>Keep workspace organized to prevent accidents</li>
 			</ul>
 		</div>
@@ -212,7 +213,7 @@
 		<div>
 			<h3>Daily Maintenance</h3>
 			<ul>
-				<li>Clean Still Air Box interior with 70% alcohol</li>
+				<li>Clean <Term abbr="SAB" /> interior with 70% <Term abbr="ethanol" /></li>
 				<li>Check temperature monitoring systems</li>
 				<li>Inspect lighting for proper function</li>
 				<li>Clean work surfaces thoroughly</li>
@@ -241,7 +242,7 @@
 	<ContentBlock title="Conclusion: Professional Results on a Home Budget" columns={1}>
 		<p>Creating an effective plant tissue culture laboratory at home is not only possible but highly practical with the right equipment alternatives. By investing in quality basic equipment and maintaining strict protocols, you can achieve results comparable to professional laboratories at a fraction of the cost.</p>
 		
-		<p>The key to success lies not in expensive equipment, but in understanding proper sterile technique, maintaining consistent environmental conditions, and following proven protocols. Your home laboratory setup will serve as an excellent learning platform and can easily be upgraded with professional equipment as your skills and needs develop.</p>
+		<p>The key to success lies not in expensive equipment, but in understanding proper <Term abbr="aseptic technique" />, maintaining consistent environmental conditions, and following proven protocols. Your home laboratory setup will serve as an excellent learning platform and can easily be upgraded with professional equipment as your skills and needs develop.</p>
 		
 		<p>Remember that many commercial tissue culture operations started with similar humble beginnings. Focus on mastering the fundamentals with your affordable setup, and you'll be well-prepared for any future expansion of your tissue culture capabilities.</p>
 		
