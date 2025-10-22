@@ -98,16 +98,16 @@
 			
 			<h3>5. Carbon Source: The Energy Provider</h3>
 			<ul>
-				<li><strong>Sucrose:</strong> Standard choice at {convertWeight(20, $unitSystem)}-{convertWeight(30, $unitSystem)}/L concentration</li>
-				<li><strong>Alternative Options:</strong> Glucose or maltose for specific applications</li>
+				<li><strong><Term abbr="Sucrose" />:</strong> Standard choice at {convertWeight(20, $unitSystem)}-{convertWeight(30, $unitSystem)}/L concentration</li>
+				<li><strong>Alternative Options:</strong> <Term abbr="Glucose" /> or maltose for specific applications</li>
 				<li><strong>Function:</strong> Provides energy since photosynthesis is limited in culture vessels</li>
 			</ul>
 			
 			<h3>6. Gelling Agent: The Support Matrix</h3>
 			<ul>
-				<li><strong>Agar:</strong> Traditional choice, {convertWeight(7, $unitSystem)}-{convertWeight(8, $unitSystem)}/L concentration</li>
-				<li><strong>Gellan Gum:</strong> Clearer medium, easier contamination detection</li>
-				<li><strong>Phytagel:</strong> Alternative for species-sensitive to agar</li>
+				<li><strong><Term abbr="Agar" />:</strong> Traditional choice, {convertWeight(7, $unitSystem)}-{convertWeight(8, $unitSystem)}/L concentration</li>
+				<li><strong><Term abbr="Gellan gum" />:</strong> Clearer medium, easier <Term abbr="contamination" /> detection</li>
+				<li><strong><Term abbr="Phytagel" />:</strong> Alternative for species-sensitive to <Term abbr="agar" /></li>
 			</ul>
 			
 			<h3>7. pH Adjusters: The Balance Keepers</h3>
@@ -125,9 +125,9 @@
 			<p><strong>Base Components</strong> (per liter):</p>
 			<ul>
 				<li><Term abbr="MS" /> basal salts: {convertWeight(4.4, $unitSystem)}</li>
-				<li>Sucrose: {convertWeight(30, $unitSystem)}</li>
-				<li>Agar: {convertWeight(8, $unitSystem)}</li>
-				<li>Distilled water: to 1000 ml</li>
+				<li><Term abbr="Sucrose" />: {convertWeight(30, $unitSystem)}</li>
+				<li><Term abbr="Agar" />: {convertWeight(8, $unitSystem)}</li>
+				<li><Term abbr="Distilled water" />: to 1000 ml</li>
 			</ul>
 			
 			<p><strong>Hormone Addition:</strong></p>
@@ -139,9 +139,9 @@
 			
 			<p><strong>Vitamin Supplements</strong> (optional but recommended):</p>
 			<ul>
-				<li>Thiamine HCl: 0.1 mg/L</li>
-				<li>Pyridoxine HCl: 0.5 mg/L</li>
-				<li>Nicotinic acid: 0.5 mg/L</li>
+				<li><Term abbr="Thiamine" /> HCl: 0.1 mg/L</li>
+				<li><Term abbr="Pyridoxine" /> HCl: 0.5 mg/L</li>
+				<li><Term abbr="Nicotinic acid" />: 0.5 mg/L</li>
 				<li>Myo-inositol: 100 mg/L</li>
 			</ul>
 		</div>
@@ -150,9 +150,9 @@
 			<p><strong>Base Components</strong> (per liter):</p>
 			<ul>
 				<li><Term abbr="MS" /> basal salts: {convertWeight(4.4, $unitSystem)} (sometimes half-strength: {convertWeight(2.2, $unitSystem)})</li>
-				<li>Sucrose: {convertWeight(20, $unitSystem)} (reduced from multiplication media)</li>
-				<li>Agar: {convertWeight(8, $unitSystem)}</li>
-				<li>Distilled water: to 1000 ml</li>
+				<li><Term abbr="Sucrose" />: {convertWeight(20, $unitSystem)} (reduced from <Term abbr="multiplication" /> media)</li>
+				<li><Term abbr="Agar" />: {convertWeight(8, $unitSystem)}</li>
+				<li><Term abbr="Distilled water" />: to 1000 ml</li>
 			</ul>
 			
 			<p><strong>Hormone Addition:</strong></p>
@@ -175,7 +175,7 @@
 			<h3>Step 1: Preparation of Stock Solutions</h3>
 			<p><strong>Purpose:</strong> Ensures accuracy and consistency across batches</p>
 			<ol>
-				<li><strong>Macronutrient Stock</strong> (10x concentration):
+				<li><strong><Term abbr="Macronutrients" /> Stock</strong> (10x concentration):
 					<ul>
 						<li>Dissolve 44 g <Term abbr="MS" /> salts in 1L distilled water</li>
 						<li>Store at {convertTemp(4, $unitSystem)} for up to 6 months</li>
@@ -254,14 +254,14 @@
 			<ul>
 				<li><strong><Term abbr="WPM" /> (Woody Plant Medium):</strong> Often better than <Term abbr="MS" /> for trees and shrubs</li>
 				<li><strong>Lower Salt Concentrations:</strong> Reduce standard <Term abbr="MS" /> to half-strength</li>
-				<li><strong>Antioxidants:</strong> Add ascorbic acid to prevent browning</li>
+				<li><strong>Antioxidants:</strong> Add <Term abbr="ascorbic acid" /> to prevent <Term abbr="browning" /></li>
 			</ul>
 			
 			<p><strong>Orchids:</strong></p>
 			<ul>
 				<li><strong>VW (Vacin & Went) Medium:</strong> Specifically formulated for orchids</li>
 				<li><strong>Banana Extract:</strong> Natural supplement for enhanced growth</li>
-				<li><strong>Coconut Water:</strong> Natural cytokinin source</li>
+				<li><strong>Coconut Water:</strong> Natural <Term abbr="cytokinin" /> source</li>
 			</ul>
 			
 			<p><strong>Ferns:</strong></p>
@@ -301,12 +301,12 @@
 					<tr>
 						<td><strong>Hyperhydricity (Vitrification)</strong></td>
 						<td>Excessive moisture/agar</td>
-						<td>Reduce agar to {convertWeight(6, $unitSystem)}-{convertWeight(7, $unitSystem)}/L or switch to gellan gum</td>
+						<td>Reduce <Term abbr="agar" /> to {convertWeight(6, $unitSystem)}-{convertWeight(7, $unitSystem)}/L or switch to <Term abbr="gellan gum" /></td>
 					</tr>
 					<tr>
-						<td><strong>Phenolic Browning</strong></td>
+						<td><strong><Term abbr="phenolic" /> <Term abbr="browning" /></strong></td>
 						<td>Oxidation of phenolics</td>
-						<td>Add activated charcoal (0.5-2.0 g/L) or antioxidants</td>
+						<td>Add <Term abbr="activated charcoal" /> (0.5-2.0 g/L) or antioxidants</td>
 					</tr>
 				</tbody>
 			</table>

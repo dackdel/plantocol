@@ -2,6 +2,7 @@
 	import ProtocolLayout from '$lib/components/ProtocolLayout.svelte';
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
 	import Timer from '$lib/components/Timer.svelte';
+	import Term from '$lib/components/Term.svelte';
 	import { unitSystem } from '$lib/stores/units';
 	import { convertTemp, convertVolume, convertWeight, displayPH } from '$lib/utils/unitConversions';
 	
@@ -12,9 +13,9 @@
 		'Explant: Node'
 	];
 	const introColumns = [
-		'Monstera deliciosa is highly responsive to tissue culture techniques. The species demonstrates excellent regeneration capabilities from nodal explants with minimal hormone requirements.',
-		'This protocol has been optimized for node culture, which provides the most reliable results. The extended sterilization process ensures contamination-free cultures while maintaining tissue viability.',
-		'Success depends primarily on proper sterilization technique. The multi-step bleach and hydrogen peroxide treatment eliminates surface contaminants without damaging meristematic tissue.'
+		'Monstera deliciosa is highly responsive to tissue culture techniques. The species demonstrates excellent <Term abbr="regeneration" /> capabilities from <Term abbr="nodal" /> <Term abbr="explant" />s with minimal hormone requirements.',
+		'This protocol has been optimized for <Term abbr="node" /> culture, which provides the most reliable results. The extended <Term abbr="sterilization" /> process ensures <Term abbr="contamination" />-free cultures while maintaining tissue viability.',
+		'Success depends primarily on proper <Term abbr="sterilization" /> technique. The multi-step <Term abbr="bleach solution" /> and <Term abbr="hydrogen peroxide" /> treatment eliminates surface contaminants without damaging <Term abbr="meristematic" /> tissue.'
 	];
 	const source = '';
 </script>
@@ -24,7 +25,7 @@
 </svelte:head>
 
 <ProtocolLayout {title} {badges} {introColumns} {source}>
-	<ContentBlock title="Sterilization Protocol">
+	<ContentBlock title="<Term abbr='surface sterilization' /> Protocol">
 		<ol class="step-list">
 			<li>
 				<span class="step-number">Step 1</span>
@@ -36,11 +37,11 @@
 			</li>
 			<li>
 				<span class="step-number">Step 3</span>
-				Prepare 1% bleach solution ({convertVolume(3, $unitSystem)} bleach to {convertVolume(300, $unitSystem)} distilled water) with surfactant and Tween 20.
+				Prepare 1% <Term abbr="bleach solution" /> ({convertVolume(3, $unitSystem)} bleach to {convertVolume(300, $unitSystem)} <Term abbr="distilled water" />) with <Term abbr="surfactant" /> and <Term abbr="Tween 20" />.
 			</li>
 			<li>
 				<span class="step-number">Step 4</span>
-				Sterilize explants in bleach solution without disturbing. Duration: <Timer duration={3600} label="Bleach Sterilization">1 hour</Timer>.
+				Sterilize <Term abbr="explant" />s in <Term abbr="bleach solution" /> without disturbing. Duration: <Timer duration={3600} label="Bleach Sterilization">1 hour</Timer>.
 			</li>
 			<li>
 				<span class="step-number">Step 5</span>
@@ -48,7 +49,7 @@
 			</li>
 			<li>
 				<span class="step-number">Step 6</span>
-				Final sterilization with H₂O₂ + vinegar mixture ({convertVolume(3, $unitSystem)} vinegar to {convertVolume(150, $unitSystem)} H₂O₂). Duration: <Timer duration={60} label="Final Sterilization">1 minute</Timer>. Creates powerful oxidizer.
+				Final <Term abbr="sterilization" /> with <Term abbr="hydrogen peroxide" /> + vinegar mixture ({convertVolume(3, $unitSystem)} vinegar to {convertVolume(150, $unitSystem)} H₂O₂). Duration: <Timer duration={60} label="Final Sterilization">1 minute</Timer>. Creates powerful oxidizer.
 			</li>
 		</ol>
 	</ContentBlock>
@@ -63,16 +64,16 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><strong>Stage I</strong><br>Establishment</td>
-					<td>MS medium • Sucrose {convertWeight(30, $unitSystem)}/L • Agar {convertWeight(7, $unitSystem)}/L • {displayPH(5.7)}<br><em>Autoclave: {convertTemp(121, $unitSystem)}, 15 PSI, 15 minutes</em></td>
+					<td><strong>Stage I</strong><br><Term abbr="establishment" /></td>
+					<td><Term abbr="MS" /> medium • <Term abbr="Sucrose" /> {convertWeight(30, $unitSystem)}/L • <Term abbr="Agar" /> {convertWeight(7, $unitSystem)}/L • <Term abbr="pH" /> {displayPH(5.7)}<br><em><Term abbr="Autoclave" />: {convertTemp(121, $unitSystem)}, 15 <Term abbr="PSI" />, 15 minutes</em></td>
 				</tr>
 				<tr>
-					<td><strong>Stage II</strong><br>Multiplication</td>
-					<td>MS medium • Sucrose {convertWeight(30, $unitSystem)}/L • Agar {convertWeight(7, $unitSystem)}/L • {displayPH(5.7)}<br><em>Monitor for media depletion after 2 weeks</em></td>
+					<td><strong>Stage II</strong><br><Term abbr="multiplication" /></td>
+					<td><Term abbr="MS" /> medium • <Term abbr="Sucrose" /> {convertWeight(30, $unitSystem)}/L • <Term abbr="Agar" /> {convertWeight(7, $unitSystem)}/L • <Term abbr="pH" /> {displayPH(5.7)}<br><em>Monitor for media depletion after 2 weeks</em></td>
 				</tr>
 				<tr>
-					<td><strong>Stage III</strong><br>Rooting</td>
-					<td>MS medium • Sucrose {convertWeight(30, $unitSystem)}/L • Agar {convertWeight(7, $unitSystem)}/L • {displayPH(5.7)}</td>
+					<td><strong>Stage III</strong><br><Term abbr="rooting" /></td>
+					<td><Term abbr="MS" /> medium • <Term abbr="Sucrose" /> {convertWeight(30, $unitSystem)}/L • <Term abbr="Agar" /> {convertWeight(7, $unitSystem)}/L • <Term abbr="pH" /> {displayPH(5.7)}</td>
 				</tr>
 			</tbody>
 		</table>
@@ -81,8 +82,8 @@
 	<ContentBlock title="Culture Conditions & Transfer" columns={2}>
 		<div>
 			<p><strong>Temperature:</strong> Room temperature ({convertTemp(20, $unitSystem)}-{convertTemp(25, $unitSystem)})</p>
-			<p><strong>Light:</strong> Standard tissue culture lighting, 16-hour photoperiod</p>
-			<p><strong>Subculture:</strong> Every 2 weeks if media shows signs of depletion</p>
+			<p><strong>Light:</strong> Standard tissue culture lighting, 16-hour <Term abbr="photoperiod" /></p>
+			<p><strong><Term abbr="subculture" />:</strong> Every 2 weeks if media shows signs of depletion</p>
 			<p><strong>Humidity:</strong> 60-70% relative humidity</p>
 		</div>
 		<div>

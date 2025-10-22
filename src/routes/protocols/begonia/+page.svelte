@@ -2,6 +2,7 @@
 	import ProtocolLayout from '$lib/components/ProtocolLayout.svelte';
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
 	import Timer from '$lib/components/Timer.svelte';
+	import Term from '$lib/components/Term.svelte';
 	import { unitSystem } from '$lib/stores/units';
 	import { convertTemp, convertVolume, convertWeight, displayPH } from '$lib/utils/unitConversions';
 	
@@ -12,9 +13,9 @@
 		'Explant: Leaf / Petiole / Shoot Tip'
 	];
 	const introColumns = [
-		'Begonias demonstrate exceptional responsiveness to tissue culture across multiple species. The genus exhibits high regenerative capacity from various explant types, including leaf sections, petioles, and shoot tips.',
-		'This protocol is particularly effective for Begonia rex and related ornamental species. Leaf section culture produces numerous shoots from a single explant, enabling rapid multiplication.',
-		'Many begonia varieties maintain their variegation patterns through tissue culture. However, long-term cultures should be monitored for somaclonal variation, which can alter leaf patterns and growth characteristics.'
+		'Begonias demonstrate exceptional responsiveness to tissue culture across multiple species. The genus exhibits high <Term abbr="regeneration" /> capacity from various <Term abbr="explant" /> types, including <Term abbr="leaf section" />s, <Term abbr="petiole" />s, and <Term abbr="shoot tip" />s.',
+		'This protocol is particularly effective for Begonia rex and related ornamental species. <Term abbr="leaf section" /> culture produces numerous shoots from a single <Term abbr="explant" />, enabling rapid <Term abbr="multiplication" />.',
+		'Many begonia varieties maintain their <Term abbr="variegation" /> patterns through tissue culture. However, long-term cultures should be monitored for <Term abbr="somaclonal" /> variation, which can alter leaf patterns and growth characteristics.'
 	];
 	const source = '';
 </script>
@@ -36,7 +37,7 @@
 			</li>
 			<li>
 				<span class="step-number">Step 3</span>
-				Surface sterilize with 1.0-1.5% sodium hypochlorite plus 2-3 drops Tween 20. Duration: <Timer duration={900} label="Surface Sterilization">10-15 minutes</Timer>.
+				<Term abbr="surface sterilization" /> with 1.0-1.5% <Term abbr="sodium hypochlorite" /> plus 2-3 drops <Term abbr="Tween 20" />. Duration: <Timer duration={900} label="Surface Sterilization">10-15 minutes</Timer>.
 			</li>
 			<li>
 				<span class="step-number">Step 4</span>
@@ -59,16 +60,16 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><strong>Stage I</strong><br>Callus/Shoot Induction</td>
-					<td>MS {convertWeight(4.44, $unitSystem)}/L • Sucrose {convertWeight(30, $unitSystem)}/L • BAP 1.0-3.0 mg/L • NAA 0.1-0.5 mg/L • Agar {convertWeight(7, $unitSystem)}-{convertWeight(8, $unitSystem)}/L • {displayPH(5.7)}-{displayPH(5.8)}<br><em>Begonias respond particularly well to cytokinin-heavy medium</em></td>
+					<td><strong>Stage I</strong><br><Term abbr="callus" />/Shoot Induction</td>
+					<td><Term abbr="MS" /> {convertWeight(4.44, $unitSystem)}/L • <Term abbr="Sucrose" /> {convertWeight(30, $unitSystem)}/L • <Term abbr="BAP" /> 1.0-3.0 mg/L • <Term abbr="NAA" /> 0.1-0.5 mg/L • <Term abbr="Agar" /> {convertWeight(7, $unitSystem)}-{convertWeight(8, $unitSystem)}/L • <Term abbr="pH" /> {displayPH(5.7)}-{displayPH(5.8)}<br><em>Begonias respond particularly well to <Term abbr="cytokinin" />-heavy medium</em></td>
 				</tr>
 				<tr>
-					<td><strong>Stage II</strong><br>Shoot Multiplication</td>
-					<td>MS {convertWeight(4.44, $unitSystem)}/L • Sucrose {convertWeight(30, $unitSystem)}/L • BAP 1.0-2.0 mg/L • NAA 0.1 mg/L • Agar {convertWeight(7, $unitSystem)}/L • {displayPH(5.7)}-{displayPH(5.8)}<br><em>Lower hormone concentrations promote shoot elongation</em></td>
+					<td><strong>Stage II</strong><br>Shoot <Term abbr="multiplication" /></td>
+					<td><Term abbr="MS" /> {convertWeight(4.44, $unitSystem)}/L • <Term abbr="Sucrose" /> {convertWeight(30, $unitSystem)}/L • <Term abbr="BAP" /> 1.0-2.0 mg/L • <Term abbr="NAA" /> 0.1 mg/L • <Term abbr="Agar" /> {convertWeight(7, $unitSystem)}/L • <Term abbr="pH" /> {displayPH(5.7)}-{displayPH(5.8)}<br><em>Lower hormone concentrations promote shoot elongation</em></td>
 				</tr>
 				<tr>
-					<td><strong>Stage III</strong><br>Rooting</td>
-					<td>MS {convertWeight(2.22, $unitSystem)}/L (half-strength) • Sucrose {convertWeight(20, $unitSystem)}/L • NAA 0.5-1.0 mg/L • Agar {convertWeight(7, $unitSystem)}/L • {displayPH(5.7)}-{displayPH(5.8)}<br><em>Begonias root easily with low auxin concentration</em></td>
+					<td><strong>Stage III</strong><br><Term abbr="rooting" /></td>
+					<td><Term abbr="MS" /> {convertWeight(2.22, $unitSystem)}/L (half-strength) • <Term abbr="Sucrose" /> {convertWeight(20, $unitSystem)}/L • <Term abbr="NAA" /> 0.5-1.0 mg/L • <Term abbr="Agar" /> {convertWeight(7, $unitSystem)}/L • <Term abbr="pH" /> {displayPH(5.7)}-{displayPH(5.8)}<br><em>Begonias root easily with low <Term abbr="auxin" /> concentration</em></td>
 				</tr>
 			</tbody>
 		</table>
@@ -76,13 +77,13 @@
 	
 	<ContentBlock title="Culture Conditions & Notes" columns={2}>
 		<div>
-			<p><strong>Temperature:</strong> {convertTemp(22, $unitSystem)}-{convertTemp(26, $unitSystem)}</p>
-			<p><strong>Light:</strong> 16-hour photoperiod, 2000-3500 lux</p>
-			<p><strong>Humidity:</strong> 60-70%</p>
+			<p><strong>Temperature:</strong> Room temperature ({convertTemp(22, $unitSystem)}-{convertTemp(25, $unitSystem)})</p>
+			<p><strong>Light:</strong> 16-hour <Term abbr="photoperiod" />, moderate intensity</p>
+			<p><strong><Term abbr="subculture" />:</strong> Every 3-4 weeks to fresh media</p>
 			<p><strong>Subculture:</strong> Every 3-4 weeks</p>
 		</div>
 		<div>
-			<p><strong>Special Considerations:</strong></p>
+			<p><strong><Term abbr="acclimatization" /> Process:</strong></p>
 			<ul>
 				<li>Leaf section culture particularly effective for B. rex</li>
 				<li>Monitor for somaclonal variation in long-term cultures</li>
