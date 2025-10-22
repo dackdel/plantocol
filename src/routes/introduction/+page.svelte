@@ -1,6 +1,7 @@
 <script>
 	import ProtocolLayout from '$lib/components/ProtocolLayout.svelte';
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
+	import Term from '$lib/components/Term.svelte';
 	
 	const title = 'Introduction to<br>Plant Tissue Culture';
 	const introColumns = [
@@ -20,7 +21,7 @@
 			<ol class="step-list">
 				<li>
 					<span class="step-number">Selection</span>
-					Choose healthy tissue containing meristematic cells
+					Choose healthy tissue containing <Term abbr="meristematic" /> cells
 				</li>
 				<li>
 					<span class="step-number">Sterilization</span>
@@ -28,7 +29,7 @@
 				</li>
 				<li>
 					<span class="step-number">Culture Initiation</span>
-					Place explants on specialized growth media
+					Place <Term abbr="explant" />s on specialized growth media
 				</li>
 			</ol>
 		</div>
@@ -36,14 +37,14 @@
 			<ol class="step-list" start="4">
 				<li>
 					<span class="step-number">Shoot Development</span>
-					Encourage shoot growth with cytokinins
+					Encourage shoot growth with <Term abbr="cytokinin" />s
 				</li>
 				<li>
 					<span class="step-number">Root Formation</span>
-					Develop roots using auxin hormones
+					Develop roots using <Term abbr="auxin" /> hormones
 				</li>
 				<li>
-					<span class="step-number">Acclimatization</span>
+					<span class="step-number"><Term abbr="acclimatization" /></span>
 					Gradually transfer plantlets to soil
 				</li>
 			</ol>
@@ -52,42 +53,42 @@
 	
 	<ContentBlock title="Key Terminology" columns={2}>
 		<div>
-			<p><strong>MS Medium:</strong> Murashige & Skoog (1962), the most commonly used basal medium containing essential nutrients, vitamins, and minerals.</p>
-			<p><strong>Cytokinins (BAP, Kinetin):</strong> Plant hormones that promote shoot formation and cell division in tissue culture.</p>
-			<p><strong>Explant:</strong> The plant tissue sample used to initiate culture, typically containing meristematic tissue.</p>
+			<p><strong><Term abbr="MS" /> Medium:</strong> Murashige & Skoog (1962), the most commonly used basal medium containing essential nutrients, vitamins, and minerals.</p>
+			<p><strong><Term abbr="cytokinin" />s (<Term abbr="BAP" />, Kinetin):</strong> Plant hormones that promote shoot formation and cell division in tissue culture.</p>
+			<p><strong><Term abbr="explant" />:</strong> The plant tissue sample used to initiate culture, typically containing <Term abbr="meristematic" /> tissue.</p>
 		</div>
 		<div>
-			<p><strong>Auxins (NAA, IBA, IAA):</strong> Plant hormones that promote root formation and cell elongation.</p>
-			<p><strong>Callus:</strong> Undifferentiated embryonic tissue that forms from explants. Can develop into complete plants under proper hormone conditions.</p>
-			<p><strong>Acclimatization:</strong> The gradual adaptation process when moving plantlets from sterile lab conditions to ambient environment.</p>
+			<p><strong><Term abbr="auxin" />s (<Term abbr="NAA" />, <Term abbr="IBA" />, <Term abbr="IAA" />):</strong> Plant hormones that promote root formation and cell elongation.</p>
+			<p><strong><Term abbr="callus" />:</strong> Undifferentiated embryonic tissue that forms from <Term abbr="explant" />s. Can develop into complete plants under proper hormone conditions.</p>
+			<p><strong><Term abbr="acclimatization" />:</strong> The gradual adaptation process when moving plantlets from sterile lab conditions to ambient environment.</p>
 		</div>
 	</ContentBlock>
 	
 	<ContentBlock title="Understanding Plant Hormones" columns={3}>
 		<div>
-			<p><strong>Cytokinins promote shoots:</strong></p>
+			<p><strong><Term abbr="cytokinin" />s promote shoots:</strong></p>
 			<ul>
 				<li>Encourage shoot formation and branching</li>
 				<li>Promote cell division</li>
 				<li>Higher concentrations = more shoots</li>
-				<li>Common types: BAP, Kinetin, Zeatin</li>
+				<li>Common types: <Term abbr="BAP" />, Kinetin, Zeatin</li>
 			</ul>
 		</div>
 		<div>
-			<p><strong>Auxins promote roots:</strong></p>
+			<p><strong><Term abbr="auxin" />s promote roots:</strong></p>
 			<ul>
 				<li>Stimulate root formation</li>
 				<li>Encourage cell elongation</li>
 				<li>Higher concentrations = more roots</li>
-				<li>Common types: NAA, IBA, IAA</li>
+				<li>Common types: <Term abbr="NAA" />, <Term abbr="IBA" />, <Term abbr="IAA" /></li>
 			</ul>
 		</div>
 		<div>
 			<p><strong>The hormone balance determines development:</strong></p>
 			<ul>
-				<li><strong>High Cytokinin : Low Auxin</strong> → Shoots develop</li>
-				<li><strong>Low Cytokinin : High Auxin</strong> → Roots develop</li>
-				<li><strong>Balanced levels</strong> → Callus formation</li>
+				<li><strong>High <Term abbr="cytokinin" /> : Low <Term abbr="auxin" /></strong> → Shoots develop</li>
+				<li><strong>Low <Term abbr="cytokinin" /> : High <Term abbr="auxin" /></strong> → Roots develop</li>
+				<li><strong>Balanced levels</strong> → <Term abbr="callus" /> formation</li>
 			</ul>
 			<p>This balance is the key to controlling what your tissue becomes. Each protocol specifies the exact hormone ratios needed for each stage.</p>
 		</div>

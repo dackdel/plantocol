@@ -1,6 +1,7 @@
 <script>
 	import ProtocolLayout from '$lib/components/ProtocolLayout.svelte';
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
+	import Term from '$lib/components/Term.svelte';
 	import { unitSystem } from '$lib/stores/units';
 	import { convertTemp, displayPH } from '$lib/utils/unitConversions';
 	
@@ -29,15 +30,15 @@
 				<span class="problem-badge critical">Critical</span>
 				<h3>Problem Description</h3>
 			</div>
-			<p>Bacteria, fungi, molds, and yeasts invading your sterile cultures, leading to complete culture failure. Contaminants can enter from external sources or exist internally within plant tissue as endophytes.</p>
+			<p>Bacteria, fungi, molds, and yeasts invading your sterile cultures, leading to complete culture failure. Contaminants can enter from external sources or exist internally within plant tissue as <Term abbr="endophytes" />.</p>
 			
 			<h4>Prevention Strategies</h4>
 			<ul>
 				<li><strong>Maintain Clean Culture Room:</strong> Regularly disinfect all surfaces with 70% ethanol</li>
-				<li><strong>Use Proper Work Environment:</strong> Laminar flow hood or still-air box for all manipulations</li>
+				<li><strong>Use Proper Work Environment:</strong> Laminar flow hood or <Term abbr="SAB" /> for all manipulations</li>
 				<li><strong>Sterilize Everything:</strong> All media, vessels, tools, and water via autoclaving ({convertTemp(121, $unitSystem)}, 15 psi, 15-20 minutes)</li>
 				<li><strong>Perfect Surface Sterilization:</strong> Use 1-10% sodium hypochlorite solution followed by multiple sterile water rinses</li>
-				<li><strong>Consider PPM™:</strong> Plant Preservative Mixture can suppress contamination (follow dosage carefully)</li>
+				<li><strong>Consider <Term abbr="PPM" />™:</strong> Plant Preservative Mixture can suppress contamination (follow dosage carefully)</li>
 			</ul>
 		</div>
 		<div>
@@ -67,7 +68,7 @@
 				<li>Insufficient light intensity</li>
 				<li>Ethylene gas accumulation</li>
 				<li>Prolonged subculture intervals</li>
-				<li>High cytokinin levels</li>
+				<li>High <Term abbr="cytokinin" /> levels</li>
 				<li>Excessive agar concentration</li>
 			</ul>
 		</div>
@@ -78,7 +79,7 @@
 				<li><strong>Increase Light:</strong> Boost intensity or adjust light spectrum</li>
 				<li><strong>Reduce Agar:</strong> Lower concentration or switch to gellan gum</li>
 				<li><strong>Shorten Subcultures:</strong> Transfer to fresh media more frequently</li>
-				<li><strong>Balance Hormones:</strong> Reduce cytokinin concentrations</li>
+				<li><strong>Balance Hormones:</strong> Reduce <Term abbr="cytokinin" /> concentrations</li>
 				<li><strong>Add Activated Charcoal:</strong> Absorbs excess gases and inhibitory compounds</li>
 			</ol>
 		</div>
@@ -90,7 +91,7 @@
 				<span class="problem-badge moderate">Moderate</span>
 				<h3>Problem Description</h3>
 			</div>
-			<p>Tissue and media turn brown due to phenolic compound oxidation, particularly common in woody plant species. This inhibits cell division and reduces regeneration capacity.</p>
+			<p>Tissue and media turn brown due to <Term abbr="phenolic" /> compound oxidation, particularly common in woody plant species. This inhibits cell division and reduces regeneration capacity.</p>
 			
 			<h4>Prevention Solutions</h4>
 			<ol>
@@ -116,7 +117,7 @@
 				<span class="problem-badge severe">Severe</span>
 				<h3>Problem Description</h3>
 			</div>
-			<p>Plant cells or tissues fail to adapt to in vitro conditions due to free radical damage to cellular macromolecules, causing complete dysfunction.</p>
+			<p><Term abbr="recalcitrant" /> plant cells or tissues fail to adapt to in vitro conditions due to free radical damage to cellular macromolecules, causing complete dysfunction.</p>
 			
 			<h4>Overcoming Strategies</h4>
 			<ol>
@@ -148,14 +149,14 @@
 				<li><strong>Limit Culture Duration:</strong> Minimize time in culture and number of subcultures</li>
 				<li><strong>Add Salicylic Acid:</strong> Growth regulator shown to reduce variation occurrence</li>
 				<li><strong>Gentle Handling:</strong> Prevent physical damage during transfers (avoid hot instruments)</li>
-				<li><strong>Avoid 2,4-D:</strong> High synthetic auxin concentrations increase variation</li>
+				<li><strong>Avoid <Term abbr="2,4-D" />:</strong> High synthetic <Term abbr="auxin" /> concentrations increase variation</li>
 			</ol>
 		</div>
 		<div>
 			<h4 style="margin-top: 53px;">More Techniques</h4>
 			<ol start="5">
 				<li><strong>Use Axillary Buds:</strong> More genetically stable than callus culture</li>
-				<li><strong>Minimize Callus Phase:</strong> If using callus, keep this stage as short as possible</li>
+				<li><strong>Minimize <Term abbr="callus" /> Phase:</strong> If using <Term abbr="callus" />, keep this stage as short as possible</li>
 				<li><strong>Fresh Starts:</strong> Periodically reinitiate cultures from new explants</li>
 			</ol>
 		</div>
@@ -220,7 +221,7 @@
 			<h4>Prevention Solutions</h4>
 			<ol>
 				<li><strong>Balanced Media:</strong> Ensure proper macro- and micronutrient ratios</li>
-				<li><strong>Proven Formulations:</strong> Start with tested formulations like MS medium</li>
+				<li><strong>Proven Formulations:</strong> Start with tested formulations like <Term abbr="MS" /> medium</li>
 			</ol>
 		</div>
 		<div>
@@ -242,7 +243,7 @@
 			
 			<h4>Control Methods</h4>
 			<ol>
-				<li><strong>Adjust Hormone Balance:</strong> Increase cytokinin-to-auxin ratio for shoot development</li>
+				<li><strong>Adjust Hormone Balance:</strong> Increase <Term abbr="cytokinin" />-to-<Term abbr="auxin" /> ratio for shoot development</li>
 				<li><strong>Fresh Medium Transfer:</strong> Move callus to medium with adjusted hormone levels</li>
 				<li><strong>Regular Monitoring:</strong> Track hormone ratios and adjust based on response</li>
 			</ol>
@@ -267,13 +268,13 @@
 			<h4>Acceleration Solutions</h4>
 			<ol>
 				<li><strong>Environment Optimization:</strong> Perfect temperature ({convertTemp(22, $unitSystem)}-{convertTemp(25, $unitSystem)}) and light conditions</li>
-				<li><strong>Growth Stimulants:</strong> Add gibberellic acid (GA3) to accelerate development</li>
+				<li><strong>Growth Stimulants:</strong> Add gibberellic acid (<Term abbr="GA3" />) to accelerate development</li>
 			</ol>
 		</div>
 		<div>
 			<h4 style="margin-top: 53px;">More Solutions</h4>
 			<ol start="3">
-				<li><strong>pH Adjustment:</strong> Ensure media pH is correctly adjusted ({displayPH(5.6)}-{displayPH(5.8)})</li>
+				<li><strong><Term abbr="pH" /> Adjustment:</strong> Ensure media <Term abbr="pH" /> is correctly adjusted ({displayPH(5.6)}-{displayPH(5.8)})</li>
 				<li><strong>Fresh Media:</strong> Replace old or degraded medium with fresh preparations</li>
 			</ol>
 		</div>
@@ -289,9 +290,9 @@
 			
 			<h4>Solutions</h4>
 			<ol>
-				<li><strong>Hormone Adjustment:</strong> Include IBA or other rooting hormones in medium</li>
+				<li><strong>Hormone Adjustment:</strong> Include <Term abbr="IBA" /> or other rooting hormones in medium</li>
 				<li><strong>Aeration:</strong> Provide root aeration in liquid culture systems</li>
-				<li><strong>Dedicated Rooting Medium:</strong> Transfer shoots to high-auxin, low-cytokinin medium</li>
+				<li><strong>Dedicated Rooting Medium:</strong> Transfer shoots to high-<Term abbr="auxin" />, low-<Term abbr="cytokinin" /> medium</li>
 			</ol>
 		</div>
 		<div>

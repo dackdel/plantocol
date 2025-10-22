@@ -3,6 +3,7 @@
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
 	import Timer from '$lib/components/Timer.svelte';
 	import StepItem from '$lib/components/StepItem.svelte';
+	import Term from '$lib/components/Term.svelte';
 	import { unitSystem } from '$lib/stores/units';
 	import { convertTemp, convertVolume, convertWeight, displayPH } from '$lib/utils/unitConversions';
 	
@@ -88,23 +89,23 @@
 	
 	<ContentBlock title="Step 3: Culture Initiation" columns={3}>
 		<div>
-			<p><strong>Explant Preparation:</strong></p>
+			<p><strong><Term abbr="explant" /> Preparation:</strong></p>
 			<ul>
-				<li>Work within sterile environment (SAB or laminar flow)</li>
+				<li>Work within sterile environment (<Term abbr="SAB" /> or laminar flow)</li>
 				<li>Cut petiole to 2-3 cm length using sterile scalpel</li>
-				<li>Make fresh cuts on leaf base to expose meristematic tissue</li>
+				<li>Make fresh cuts on leaf base to expose <Term abbr="meristematic" /> tissue</li>
 				<li>Handle gently to avoid tissue damage</li>
 			</ul>
 		</div>
 		<div>
 			<p><strong>Initiation Medium Formula:</strong></p>
 			<ul>
-				<li>MS basal medium</li>
+				<li><Term abbr="MS" /> basal medium</li>
 				<li>Sucrose {convertWeight(30, $unitSystem)}/L</li>
-				<li>BAP (cytokinin) 1.0 mg/L</li>
-				<li>IAA (auxin) 0.1 mg/L</li>
+				<li><Term abbr="BAP" /> (<Term abbr="cytokinin" />) 1.0 mg/L</li>
+				<li><Term abbr="IAA" /> (<Term abbr="auxin" />) 0.1 mg/L</li>
 				<li>Agar {convertWeight(8, $unitSystem)}/L</li>
-				<li>{displayPH(5.6)}-{displayPH(5.8)}</li>
+				<li><Term abbr="pH" /> {displayPH(5.6)}-{displayPH(5.8)}</li>
 			</ul>
 		</div>
 		<div>
@@ -132,7 +133,7 @@
 			<ul>
 				<li>Transfer to fresh multiplication medium every 4-6 weeks</li>
 				<li>Carefully separate individual shoots</li>
-				<li>Each shoot can be cultured as independent explant</li>
+				<li>Each shoot can be cultured as independent <Term abbr="explant" /></li>
 				<li>Maintain sterile technique during transfers</li>
 			</ul>
 		</div>
@@ -141,16 +142,16 @@
 	<ContentBlock title="Step 5: Rooting (2-4 weeks)" columns={2}>
 		<div>
 			<p><strong>Natural Rooting:</strong></p>
-			<p>African violets often develop roots spontaneously on multiplication medium. If rooting occurs, proceed directly to acclimatization.</p>
+			<p>African violets often develop roots spontaneously on multiplication medium. If rooting occurs, proceed directly to <Term abbr="acclimatization" />.</p>
 		</div>
 		<div>
 			<p><strong>Dedicated Rooting Medium (if needed):</strong></p>
 			<ul>
-				<li>Half-strength MS medium ({convertWeight(2.22, $unitSystem)}/L)</li>
+				<li>Half-strength <Term abbr="MS" /> medium ({convertWeight(2.22, $unitSystem)}/L)</li>
 				<li>Sucrose {convertWeight(20, $unitSystem)}/L (reduced from multiplication)</li>
 				<li>Hormone-free or very low hormone concentration</li>
 				<li>Agar {convertWeight(8, $unitSystem)}/L</li>
-				<li>{displayPH(5.6)}-{displayPH(5.8)}</li>
+				<li><Term abbr="pH" /> {displayPH(5.6)}-{displayPH(5.8)}</li>
 			</ul>
 			<p>Transfer well-developed shoots to rooting medium. Roots typically develop within 2-4 weeks.</p>
 		</div>

@@ -2,6 +2,7 @@
 	import ProtocolLayout from '$lib/components/ProtocolLayout.svelte';
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
 	import StepItem from '$lib/components/StepItem.svelte';
+	import Term from '$lib/components/Term.svelte';
 	import { unitSystem } from '$lib/stores/units';
 	import { convertTemp, convertWeight, displayPH } from '$lib/utils/unitConversions';
 	
@@ -43,10 +44,10 @@
 			<li>70% ethanol for pre-treatment</li>
 			<li>15% bleach solution (0.75% sodium hypochlorite)</li>
 			<li>Surfactant (1-2 drops liquid soap per {convertWeight(100, $unitSystem)} bleach solution)</li>
-			<li>MS medium with modified hormones</li>
+			<li><Term abbr="MS" /> medium with modified hormones</li>
 			<li>Sterile distilled water</li>
 			<li>Sterile tools (forceps, scalpel)</li>
-			<li>Still Air Box or laminar flow hood</li>
+			<li><Term abbr="SAB" /> or laminar flow hood</li>
 		</ul>
 	</ContentBlock>
 	
@@ -61,10 +62,10 @@
 			</ul>
 		</div>
 		<div>
-			<p><strong>Explant Types:</strong></p>
+			<p><strong><Term abbr="explant" /> Types:</strong></p>
 			<ul>
 				<li><strong>Primary:</strong> Central crown tissue (1-2 cm sections)</li>
-				<li><strong>Alternative:</strong> Young leaf bases with meristematic tissue</li>
+				<li><strong>Alternative:</strong> Young leaf bases with <Term abbr="meristematic" /> tissue</li>
 				<li><strong>Size:</strong> Keep explants small to ensure sterilization penetration</li>
 				<li><strong>Quality:</strong> Use only healthy, vigorous tissue</li>
 			</ul>
@@ -92,10 +93,10 @@
 	
 	<ContentBlock title="Step 3: Culture Initiation" columns={3}>
 		<div>
-			<p><strong>Explant Preparation:</strong></p>
+			<p><strong><Term abbr="explant" /> Preparation:</strong></p>
 			<ul>
-				<li>Work within sterile environment (SAB or laminar flow)</li>
-				<li>Trim explants to 1-2 cm sections</li>
+				<li>Work within sterile environment (<Term abbr="SAB" /> or laminar flow)</li>
+				<li>Trim <Term abbr="explant" />s to 1-2 cm sections</li>
 				<li>Remove any browning tissue edges</li>
 				<li>Handle gently to avoid damage</li>
 			</ul>
@@ -103,12 +104,12 @@
 		<div>
 			<p><strong>Initiation Medium Formula:</strong></p>
 			<ul>
-				<li>MS basal medium</li>
+				<li><Term abbr="MS" /> basal medium</li>
 				<li>Sucrose {convertWeight(30, $unitSystem)}/L</li>
-				<li>BAP (cytokinin) 2.0 mg/L (higher than African violet)</li>
-				<li>NAA (auxin) 0.1 mg/L (more stable than IAA)</li>
+				<li><Term abbr="BAP" /> (<Term abbr="cytokinin" />) 2.0 mg/L (higher than African violet)</li>
+				<li><Term abbr="NAA" /> (<Term abbr="auxin" />) 0.1 mg/L (more stable than <Term abbr="IAA" />)</li>
 				<li>Agar {convertWeight(8, $unitSystem)}/L</li>
-				<li>{displayPH(5.7)}</li>
+				<li><Term abbr="pH" /> {displayPH(5.7)}</li>
 			</ul>
 		</div>
 		<div>
@@ -143,9 +144,9 @@
 		<div>
 			<p><strong>Multiplication Medium Adjustment:</strong></p>
 			<ul>
-				<li>Maintain BAP at 2.0 mg/L for strong multiplication</li>
-				<li>Consider reducing to 1.5 mg/L if excessive callus forms</li>
-				<li>NAA can be reduced to 0.05 mg/L in later subcultures</li>
+				<li>Maintain <Term abbr="BAP" /> at 2.0 mg/L for strong multiplication</li>
+				<li>Consider reducing to 1.5 mg/L if excessive <Term abbr="callus" /> forms</li>
+				<li><Term abbr="NAA" /> can be reduced to 0.05 mg/L in later subcultures</li>
 			</ul>
 		</div>
 	</ContentBlock>
@@ -154,12 +155,12 @@
 		<div>
 			<p><strong>Rooting Medium Formula:</strong></p>
 			<ul>
-				<li>Full-strength MS medium</li>
+				<li>Full-strength <Term abbr="MS" /> medium</li>
 				<li>Sucrose {convertWeight(20, $unitSystem)}/L</li>
-				<li>IBA (auxin) 1.0 mg/L (essential for Hosta rooting)</li>
-				<li>No cytokinin</li>
+				<li><Term abbr="IBA" /> (<Term abbr="auxin" />) 1.0 mg/L (essential for Hosta rooting)</li>
+				<li>No <Term abbr="cytokinin" /></li>
 				<li>Agar {convertWeight(8, $unitSystem)}/L</li>
-				<li>{displayPH(5.7)}</li>
+				<li><Term abbr="pH" /> {displayPH(5.7)}</li>
 			</ul>
 		</div>
 		<div>
@@ -170,7 +171,7 @@
 				<li>Expect 2-4 weeks for root development</li>
 				<li>Roots should be 2-3 cm long before transplanting</li>
 			</ul>
-			<p class="tip-box">💡 <strong>Tip:</strong> Hostas require IBA for reliable rooting. If roots don't develop, try pulse treatment (5 mg/L IBA for 48 hours).</p>
+			<p class="tip-box">💡 <strong>Tip:</strong> Hostas require <Term abbr="IBA" /> for reliable rooting. If roots don't develop, try pulse treatment (5 mg/L <Term abbr="IBA" /> for 48 hours).</p>
 		</div>
 	</ContentBlock>
 	

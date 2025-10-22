@@ -1,6 +1,7 @@
 <script>
 	import ProtocolLayout from '$lib/components/ProtocolLayout.svelte';
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
+	import Term from '$lib/components/Term.svelte';
 	import { unitSystem } from '$lib/stores/units';
 	import { convertTemp, convertWeight, displayPH } from '$lib/utils/unitConversions';
 	
@@ -58,7 +59,7 @@
 				<li><strong>Nitrogen (N):</strong> Protein synthesis and chlorophyll production</li>
 				<li><strong>Phosphorus (P):</strong> Energy transfer and root development</li>
 				<li><strong>Potassium (K):</strong> Water regulation and disease resistance</li>
-				<li><strong>Standard Source:</strong> MS (Murashige and Skoog) salts provide optimal balance</li>
+				<li><strong>Standard Source:</strong> <Term abbr="MS" /> (Murashige and Skoog) salts provide optimal balance</li>
 			</ul>
 			
 			<h3>2. Micronutrients: The Catalysts</h3>
@@ -81,18 +82,18 @@
 		</div>
 		<div>
 			<h3>4. Growth Regulators: The Control System</h3>
-			<p><strong>Cytokinins</strong> (Promote Shoot Development):</p>
+			<p><strong><Term abbr="cytokinin" />s</strong> (Promote Shoot Development):</p>
 			<ul>
-				<li><strong>BAP (6-Benzylaminopurine):</strong> Most commonly used, highly effective</li>
-				<li><strong>Kinetin:</strong> Natural cytokinin, gentler action</li>
-				<li><strong>TDZ (Thidiazuron):</strong> Very potent, use in lower concentrations</li>
+				<li><strong><Term abbr="BAP" /> (6-Benzylaminopurine):</strong> Most commonly used, highly effective</li>
+				<li><strong>Kinetin:</strong> Natural <Term abbr="cytokinin" />, gentler action</li>
+				<li><strong><Term abbr="TDZ" /> (Thidiazuron):</strong> Very potent, use in lower concentrations</li>
 			</ul>
 			
-			<p><strong>Auxins</strong> (Promote Root Development):</p>
+			<p><strong><Term abbr="auxin" />s</strong> (Promote Root Development):</p>
 			<ul>
-				<li><strong>IBA (Indole-3-butyric acid):</strong> Stable and effective for rooting</li>
-				<li><strong>NAA (Naphthaleneacetic acid):</strong> Strong auxin, use carefully</li>
-				<li><strong>IAA (Indole-3-acetic acid):</strong> Natural auxin, less stable</li>
+				<li><strong><Term abbr="IBA" /> (Indole-3-butyric acid):</strong> Stable and effective for rooting</li>
+				<li><strong><Term abbr="NAA" /> (Naphthaleneacetic acid):</strong> Strong <Term abbr="auxin" />, use carefully</li>
+				<li><strong><Term abbr="IAA" /> (Indole-3-acetic acid):</strong> Natural <Term abbr="auxin" />, less stable</li>
 			</ul>
 			
 			<h3>5. Carbon Source: The Energy Provider</h3>
@@ -120,10 +121,10 @@
 	
 	<ContentBlock title="Specific Media Formulations" columns={2}>
 		<div>
-			<h3>Multiplication Media Recipe (MS-Based)</h3>
+			<h3>Multiplication Media Recipe (<Term abbr="MS" />-Based)</h3>
 			<p><strong>Base Components</strong> (per liter):</p>
 			<ul>
-				<li>MS basal salts: {convertWeight(4.4, $unitSystem)}</li>
+				<li><Term abbr="MS" /> basal salts: {convertWeight(4.4, $unitSystem)}</li>
 				<li>Sucrose: {convertWeight(30, $unitSystem)}</li>
 				<li>Agar: {convertWeight(8, $unitSystem)}</li>
 				<li>Distilled water: to 1000 ml</li>
@@ -131,9 +132,9 @@
 			
 			<p><strong>Hormone Addition:</strong></p>
 			<ul>
-				<li><strong>BAP (Cytokinin):</strong> 0.5-2.0 mg/L</li>
-				<li><strong>IAA (Auxin):</strong> 0.1-0.5 mg/L</li>
-				<li><strong>Ratio:</strong> High cytokinin to low auxin (4:1 to 10:1)</li>
+				<li><strong><Term abbr="BAP" /> (<Term abbr="cytokinin" />):</strong> 0.5-2.0 mg/L</li>
+				<li><strong><Term abbr="IAA" /> (<Term abbr="auxin" />):</strong> 0.1-0.5 mg/L</li>
+				<li><strong>Ratio:</strong> High <Term abbr="cytokinin" /> to low <Term abbr="auxin" /> (4:1 to 10:1)</li>
 			</ul>
 			
 			<p><strong>Vitamin Supplements</strong> (optional but recommended):</p>
@@ -145,10 +146,10 @@
 			</ul>
 		</div>
 		<div>
-			<h3>Rooting Media Recipe (MS-Based)</h3>
+			<h3>Rooting Media Recipe (<Term abbr="MS" />-Based)</h3>
 			<p><strong>Base Components</strong> (per liter):</p>
 			<ul>
-				<li>MS basal salts: {convertWeight(4.4, $unitSystem)} (sometimes half-strength: {convertWeight(2.2, $unitSystem)})</li>
+				<li><Term abbr="MS" /> basal salts: {convertWeight(4.4, $unitSystem)} (sometimes half-strength: {convertWeight(2.2, $unitSystem)})</li>
 				<li>Sucrose: {convertWeight(20, $unitSystem)} (reduced from multiplication media)</li>
 				<li>Agar: {convertWeight(8, $unitSystem)}</li>
 				<li>Distilled water: to 1000 ml</li>
@@ -156,15 +157,15 @@
 			
 			<p><strong>Hormone Addition:</strong></p>
 			<ul>
-				<li><strong>IBA (Auxin):</strong> 1.0-5.0 mg/L</li>
-				<li><strong>Cytokinin:</strong> 0.1 mg/L or completely omitted</li>
-				<li><strong>Ratio:</strong> High auxin to no/low cytokinin</li>
+				<li><strong><Term abbr="IBA" /> (<Term abbr="auxin" />):</strong> 1.0-5.0 mg/L</li>
+				<li><strong><Term abbr="cytokinin" />:</strong> 0.1 mg/L or completely omitted</li>
+				<li><strong>Ratio:</strong> High <Term abbr="auxin" /> to no/low <Term abbr="cytokinin" /></li>
 			</ul>
 			
 			<p><strong>Alternative Formulations:</strong></p>
 			<ul>
 				<li><strong>Hormone-Free:</strong> Some species root better without added hormones</li>
-				<li><strong>NAA Alternative:</strong> 0.5-2.0 mg/L NAA instead of IBA for stubborn species</li>
+				<li><strong><Term abbr="NAA" /> Alternative:</strong> 0.5-2.0 mg/L <Term abbr="NAA" /> instead of <Term abbr="IBA" /> for stubborn species</li>
 			</ul>
 		</div>
 	</ContentBlock>
@@ -176,7 +177,7 @@
 			<ol>
 				<li><strong>Macronutrient Stock</strong> (10x concentration):
 					<ul>
-						<li>Dissolve 44 g MS salts in 1L distilled water</li>
+						<li>Dissolve 44 g <Term abbr="MS" /> salts in 1L distilled water</li>
 						<li>Store at {convertTemp(4, $unitSystem)} for up to 6 months</li>
 					</ul>
 				</li>
@@ -251,8 +252,8 @@
 			
 			<p><strong>Woody Plants:</strong></p>
 			<ul>
-				<li><strong>WPM (Woody Plant Medium):</strong> Often better than MS for trees and shrubs</li>
-				<li><strong>Lower Salt Concentrations:</strong> Reduce standard MS to half-strength</li>
+				<li><strong><Term abbr="WPM" /> (Woody Plant Medium):</strong> Often better than <Term abbr="MS" /> for trees and shrubs</li>
+				<li><strong>Lower Salt Concentrations:</strong> Reduce standard <Term abbr="MS" /> to half-strength</li>
 				<li><strong>Antioxidants:</strong> Add ascorbic acid to prevent browning</li>
 			</ul>
 			
@@ -265,8 +266,8 @@
 			
 			<p><strong>Ferns:</strong></p>
 			<ul>
-				<li><strong>Modified MS:</strong> Reduced nitrogen concentrations</li>
-				<li><strong>Lower pH:</strong> Target {displayPH(5.0)}-{displayPH(5.5)} instead of standard range</li>
+				<li><strong>Modified <Term abbr="MS" />:</strong> Reduced nitrogen concentrations</li>
+				<li><strong>Lower <Term abbr="pH" />:</strong> Target {displayPH(5.0)}-{displayPH(5.5)} instead of standard range</li>
 				<li><strong>Specialized Vitamins:</strong> Enhanced B-vitamin complex</li>
 			</ul>
 		</div>
@@ -285,12 +286,12 @@
 					<tr>
 						<td><strong>Poor Shoot Multiplication</strong></td>
 						<td>Insufficient cytokinin</td>
-						<td>Increase BAP to 1.5-3.0 mg/L or switch cytokinin type</td>
+						<td>Increase <Term abbr="BAP" /> to 1.5-3.0 mg/L or switch <Term abbr="cytokinin" /> type</td>
 					</tr>
 					<tr>
 						<td><strong>Inadequate Rooting</strong></td>
 						<td>Low auxin concentration</td>
-						<td>Increase IBA to 2-7 mg/L or try NAA</td>
+						<td>Increase <Term abbr="IBA" /> to 2-7 mg/L or try <Term abbr="NAA" /></td>
 					</tr>
 					<tr>
 						<td><strong>Contamination Issues</strong></td>
