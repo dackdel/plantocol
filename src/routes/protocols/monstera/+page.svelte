@@ -13,9 +13,9 @@
 		'Explant: Node'
 	];
 	const introColumns = [
-		'Monstera deliciosa is highly responsive to tissue culture techniques. The species demonstrates excellent <Term abbr="regeneration" /> capabilities from <Term abbr="nodal" /> <Term abbr="explant" />s with minimal hormone requirements.',
-		'This protocol has been optimized for <Term abbr="node" /> culture, which provides the most reliable results. The extended <Term abbr="sterilization" /> process ensures <Term abbr="contamination" />-free cultures while maintaining tissue viability.',
-		'Success depends primarily on proper <Term abbr="sterilization" /> technique. The multi-step <Term abbr="bleach solution" /> and <Term abbr="hydrogen peroxide" /> treatment eliminates surface contaminants without damaging <Term abbr="meristematic" /> tissue.'
+		'Monstera deliciosa is highly responsive to tissue culture techniques. The species demonstrates excellent regeneration capabilities from nodal explants with minimal hormone requirements.',
+		'This protocol has been optimized for node culture, which provides the most reliable results. The extended sterilization process ensures contamination-free cultures while maintaining tissue viability.',
+		'Success depends primarily on proper sterilization technique. The multi-step bleach and hydrogen peroxide treatment eliminates surface contaminants without damaging meristematic tissue.'
 	];
 	const source = '';
 </script>
@@ -25,7 +25,7 @@
 </svelte:head>
 
 <ProtocolLayout {title} {badges} {introColumns} {source}>
-	<ContentBlock title="<Term abbr='surface sterilization' /> Protocol">
+	<ContentBlock title="Sterilization Protocol">
 		<ol class="step-list">
 			<li>
 				<span class="step-number">Step 1</span>

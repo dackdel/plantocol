@@ -16,7 +16,7 @@
 	const introColumns = [
 		'Starting your plant tissue culture journey doesn\'t require expensive laboratory equipment. With the right affordable alternatives and proper techniques, you can create a highly effective home setup that produces professional-quality results.',
 		'This guide provides detailed equipment alternatives, setup instructions, and cost comparisons. You\'ll learn how to build a functional tissue culture lab for under $800—a 95% cost reduction compared to professional setups while maintaining effectiveness.',
-		'The key to success lies not in expensive equipment, but in understanding proper <Term abbr="aseptic technique" />, maintaining consistent environmental conditions, and following proven protocols.'
+		'The key to success lies not in expensive equipment, but in understanding proper aseptic technique, maintaining consistent environmental conditions, and following proven protocols.'
 	];
 	const source = '';
 </script>

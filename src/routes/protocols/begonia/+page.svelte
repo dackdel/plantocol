@@ -13,9 +13,9 @@
 		'Explant: Leaf / Petiole / Shoot Tip'
 	];
 	const introColumns = [
-		'Begonias demonstrate exceptional responsiveness to tissue culture across multiple species. The genus exhibits high <Term abbr="regeneration" /> capacity from various <Term abbr="explant" /> types, including <Term abbr="leaf section" />s, <Term abbr="petiole" />s, and <Term abbr="shoot tip" />s.',
-		'This protocol is particularly effective for Begonia rex and related ornamental species. <Term abbr="leaf section" /> culture produces numerous shoots from a single <Term abbr="explant" />, enabling rapid <Term abbr="multiplication" />.',
-		'Many begonia varieties maintain their <Term abbr="variegation" /> patterns through tissue culture. However, long-term cultures should be monitored for <Term abbr="somaclonal" /> variation, which can alter leaf patterns and growth characteristics.'
+		'Begonias demonstrate exceptional responsiveness to tissue culture across multiple species. The genus exhibits high regenerative capacity from various explant types, including leaf sections, petioles, and shoot tips.',
+		'This protocol is particularly effective for Begonia rex and related ornamental species. Leaf section culture produces numerous shoots from a single explant, enabling rapid multiplication.',
+		'Many begonia varieties maintain their variegation patterns through tissue culture. However, long-term cultures should be monitored for somaclonal variation, which can alter leaf patterns and growth characteristics.'
 	];
 	const source = '';
 </script>
