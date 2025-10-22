@@ -6,6 +6,13 @@
 	
 	let element;
 	
+	// Tailwind grid classes based on column count
+	$: gridClasses = columns === 2 
+		? 'grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-[60px]' 
+		: columns === 3 
+		? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-[35px] lg:gap-[40px] xl:gap-[60px]' 
+		: '';
+	
 	onMount(() => {
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach(entry => {
@@ -26,7 +33,7 @@
 		<h3>{title}</h3>
 	{/if}
 	
-	<div class="content" class:two-column={columns === 2}>
+	<div class="content {gridClasses}">
 		<slot />
 	</div>
 </section>
@@ -45,11 +52,6 @@
 		border-bottom: 1px solid #000;
 	}
 	
-	.two-column {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-		gap: 60px;
-	}
 	
 	.content :global(p) {
 		font-size: clamp(15px, 1.6vw, 18px);
@@ -125,10 +127,6 @@
 			padding-bottom: 10px;
 		}
 		
-		.two-column {
-			grid-template-columns: 1fr;
-			gap: 30px;
-		}
 		
 		.content :global(p),
 		.content :global(li) {
@@ -160,10 +158,6 @@
 			margin-bottom: 30px;
 		}
 		
-		.two-column {
-			grid-template-columns: 1fr;
-			gap: 35px;
-		}
 		
 		.content :global(table) {
 			font-size: 14px;
@@ -179,10 +173,6 @@
 		.content-block {
 			margin-bottom: 100px;
 		}
-		
-		.two-column {
-			gap: 50px;
-		}
 	}
 	
 	@media (min-width: 1921px) {
@@ -196,9 +186,6 @@
 			padding-bottom: 20px;
 		}
 		
-		.two-column {
-			gap: 80px;
-		}
 		
 		.content :global(p),
 		.content :global(li) {

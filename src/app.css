@@ -1,5 +1,10 @@
 /* Inter Font - Google Fonts CDN (faster loading, smaller bundle) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=block');
+
+/* Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Reset & Base */
 * {

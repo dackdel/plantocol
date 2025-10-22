@@ -51,26 +51,24 @@
 		</ul>
 	</ContentBlock>
 	
-	<ContentBlock title="Step 1: Explant Selection & Preparation">
-		<div class="two-column">
-			<div>
-				<p><strong>Choose Optimal Explants:</strong></p>
-				<ul>
-					<li>Select healthy, mature leaves with petioles attached</li>
-					<li>Avoid flowering plants (reduces success rates)</li>
-					<li>Use leaves from disease-free, vigorous plants</li>
-					<li>Morning harvest provides best results</li>
-				</ul>
-			</div>
-			<div>
-				<p><strong>Initial Cleaning:</strong></p>
-				<ul>
-					<li>Rinse explants under running tap water</li>
-					<li>Remove any visible debris or damaged tissue</li>
-					<li>Pat gently dry with paper towels</li>
-					<li>Prepare for surface sterilization immediately</li>
-				</ul>
-			</div>
+	<ContentBlock title="Step 1: Explant Selection & Preparation" columns={2}>
+		<div>
+			<p><strong>Choose Optimal Explants:</strong></p>
+			<ul>
+				<li>Select healthy, mature leaves with petioles attached</li>
+				<li>Avoid flowering plants (reduces success rates)</li>
+				<li>Use leaves from disease-free, vigorous plants</li>
+				<li>Morning harvest provides best results</li>
+			</ul>
+		</div>
+		<div>
+			<p><strong>Initial Cleaning:</strong></p>
+			<ul>
+				<li>Rinse explants under running tap water</li>
+				<li>Remove any visible debris or damaged tissue</li>
+				<li>Pat gently dry with paper towels</li>
+				<li>Prepare for surface sterilization immediately</li>
+			</ul>
 		</div>
 	</ContentBlock>
 	
@@ -88,80 +86,89 @@
 		</ol>
 	</ContentBlock>
 	
-	<ContentBlock title="Step 3: Culture Initiation">
-		<div class="two-column">
-			<div>
-				<p><strong>Explant Preparation:</strong></p>
-				<ul>
-					<li>Work within sterile environment (SAB or laminar flow)</li>
-					<li>Cut petiole to 2-3 cm length using sterile scalpel</li>
-					<li>Make fresh cuts on leaf base to expose meristematic tissue</li>
-					<li>Handle gently to avoid tissue damage</li>
-				</ul>
-			</div>
-			<div>
-				<p><strong>Initiation Medium Formula:</strong></p>
-				<ul>
-					<li>MS basal medium</li>
-					<li>Sucrose {convertWeight(30, $unitSystem)}/L</li>
-					<li>BAP (cytokinin) 1.0 mg/L</li>
-					<li>IAA (auxin) 0.1 mg/L</li>
-					<li>Agar {convertWeight(8, $unitSystem)}/L</li>
-					<li>{displayPH(5.6)}-{displayPH(5.8)}</li>
-				</ul>
-			</div>
+	<ContentBlock title="Step 3: Culture Initiation" columns={3}>
+		<div>
+			<p><strong>Explant Preparation:</strong></p>
+			<ul>
+				<li>Work within sterile environment (SAB or laminar flow)</li>
+				<li>Cut petiole to 2-3 cm length using sterile scalpel</li>
+				<li>Make fresh cuts on leaf base to expose meristematic tissue</li>
+				<li>Handle gently to avoid tissue damage</li>
+			</ul>
 		</div>
-		<p><strong>Culture Conditions:</strong> Temperature {convertTemp(22, $unitSystem)}-{convertTemp(25, $unitSystem)}, 16-hour photoperiod with moderate light intensity, sealed culture vessels to maintain high humidity.</p>
-	</ContentBlock>
-	
-	<ContentBlock title="Step 4: Multiplication Phase (4-6 weeks)">
-		<div class="two-column">
-			<div>
-				<p><strong>Growth Monitoring:</strong></p>
-				<ul>
-					<li>Shoots typically appear after 2-3 weeks</li>
-					<li>Multiple shoots develop from petiole base</li>
-					<li>Healthy shoots show bright green coloration</li>
-					<li>Watch for contamination signs daily</li>
-				</ul>
-			</div>
-			<div>
-				<p><strong>Subculturing Process:</strong></p>
-				<ul>
-					<li>Transfer to fresh multiplication medium every 4-6 weeks</li>
-					<li>Carefully separate individual shoots</li>
-					<li>Each shoot can be cultured as independent explant</li>
-					<li>Maintain sterile technique during transfers</li>
-				</ul>
-			</div>
+		<div>
+			<p><strong>Initiation Medium Formula:</strong></p>
+			<ul>
+				<li>MS basal medium</li>
+				<li>Sucrose {convertWeight(30, $unitSystem)}/L</li>
+				<li>BAP (cytokinin) 1.0 mg/L</li>
+				<li>IAA (auxin) 0.1 mg/L</li>
+				<li>Agar {convertWeight(8, $unitSystem)}/L</li>
+				<li>{displayPH(5.6)}-{displayPH(5.8)}</li>
+			</ul>
+		</div>
+		<div>
+			<p><strong>Culture Conditions:</strong></p>
+			<ul>
+				<li>Temperature: {convertTemp(22, $unitSystem)}-{convertTemp(25, $unitSystem)}</li>
+				<li>16-hour photoperiod with moderate light intensity</li>
+				<li>Sealed culture vessels to maintain high humidity</li>
+			</ul>
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="Step 5: Rooting (2-4 weeks)">
-		<p><strong>Natural Rooting:</strong> African violets often develop roots spontaneously on multiplication medium. If rooting occurs, proceed directly to acclimatization.</p>
-		<p><strong>Dedicated Rooting Medium (if needed):</strong></p>
-		<ul>
-			<li>Half-strength MS medium ({convertWeight(2.22, $unitSystem)}/L)</li>
-			<li>Sucrose {convertWeight(20, $unitSystem)}/L (reduced from multiplication)</li>
-			<li>Hormone-free or very low hormone concentration</li>
-			<li>Agar {convertWeight(8, $unitSystem)}/L</li>
-			<li>{displayPH(5.6)}-{displayPH(5.8)}</li>
-		</ul>
-		<p>Transfer well-developed shoots to rooting medium. Roots typically develop within 2-4 weeks.</p>
+	<ContentBlock title="Step 4: Multiplication Phase (4-6 weeks)" columns={2}>
+		<div>
+			<p><strong>Growth Monitoring:</strong></p>
+			<ul>
+				<li>Shoots typically appear after 2-3 weeks</li>
+				<li>Multiple shoots develop from petiole base</li>
+				<li>Healthy shoots show bright green coloration</li>
+				<li>Watch for contamination signs daily</li>
+			</ul>
+		</div>
+		<div>
+			<p><strong>Subculturing Process:</strong></p>
+			<ul>
+				<li>Transfer to fresh multiplication medium every 4-6 weeks</li>
+				<li>Carefully separate individual shoots</li>
+				<li>Each shoot can be cultured as independent explant</li>
+				<li>Maintain sterile technique during transfers</li>
+			</ul>
+		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="Step 6: Acclimatization (2-3 weeks)">
-		<ol class="step-list">
-			<StepItem {protocolId} stepId="step-6-1" stepNumber="Root Cleaning">
-				Gently remove all agar from roots under running water. Avoid damaging delicate root hairs. Pat dry gently with paper towel.
-			</StepItem>
-			<StepItem {protocolId} stepId="step-6-2" stepNumber="Transplanting">
-				Use sterile potting mix (peat/perlite/vermiculite blend). Small pots (2-3 inches) for initial transplant. Plant at same depth as in culture.
-			</StepItem>
-			<StepItem {protocolId} stepId="step-6-3" stepNumber="Humidity Management">
-				Cover with clear plastic bag or container. Maintain high humidity initially (90-95%). Gradually increase ventilation over 2-3 weeks. Monitor for wilting and adjust accordingly.
-			</StepItem>
-		</ol>
+	<ContentBlock title="Step 5: Rooting (2-4 weeks)" columns={2}>
+		<div>
+			<p><strong>Natural Rooting:</strong></p>
+			<p>African violets often develop roots spontaneously on multiplication medium. If rooting occurs, proceed directly to acclimatization.</p>
+		</div>
+		<div>
+			<p><strong>Dedicated Rooting Medium (if needed):</strong></p>
+			<ul>
+				<li>Half-strength MS medium ({convertWeight(2.22, $unitSystem)}/L)</li>
+				<li>Sucrose {convertWeight(20, $unitSystem)}/L (reduced from multiplication)</li>
+				<li>Hormone-free or very low hormone concentration</li>
+				<li>Agar {convertWeight(8, $unitSystem)}/L</li>
+				<li>{displayPH(5.6)}-{displayPH(5.8)}</li>
+			</ul>
+			<p>Transfer well-developed shoots to rooting medium. Roots typically develop within 2-4 weeks.</p>
+		</div>
+	</ContentBlock>
+	
+	<ContentBlock title="Step 6: Acclimatization (2-3 weeks)" columns={3}>
+		<div>
+			<p><strong>Root Cleaning</strong></p>
+			<p>Gently remove all agar from roots under running water. Avoid damaging delicate root hairs. Pat dry gently with paper towel.</p>
+		</div>
+		<div>
+			<p><strong>Transplanting</strong></p>
+			<p>Use sterile potting mix (peat/perlite/vermiculite blend). Small pots (2-3 inches) for initial transplant. Plant at same depth as in culture.</p>
+		</div>
+		<div>
+			<p><strong>Humidity Management</strong></p>
+			<p>Cover with clear plastic bag or container. Maintain high humidity initially (90-95%). Gradually increase ventilation over 2-3 weeks. Monitor for wilting and adjust accordingly.</p>
+		</div>
 	</ContentBlock>
 	
 	<ContentBlock title="Success Indicators Timeline">

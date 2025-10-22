@@ -212,7 +212,7 @@
 		color: #222;
 		text-decoration: none;
 		/* Interface Guidelines: Motion - Fast transition */
-		transition: color 150ms ease, padding-left 150ms ease;
+		transition: color 150ms ease;
 	}
 	
 	.item-content {
@@ -251,7 +251,6 @@
 	@media (hover: hover) {
 		.protocol-list a:hover {
 			color: #666;
-			padding-left: 12px;
 		}
 	}
 	

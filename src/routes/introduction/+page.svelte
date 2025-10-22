@@ -63,7 +63,7 @@
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="Understanding Plant Hormones" columns={2}>
+	<ContentBlock title="Understanding Plant Hormones" columns={3}>
 		<div>
 			<p><strong>Cytokinins promote shoots:</strong></p>
 			<ul>
@@ -72,6 +72,8 @@
 				<li>Higher concentrations = more shoots</li>
 				<li>Common types: BAP, Kinetin, Zeatin</li>
 			</ul>
+		</div>
+		<div>
 			<p><strong>Auxins promote roots:</strong></p>
 			<ul>
 				<li>Stimulate root formation</li>
@@ -91,30 +93,30 @@
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="Timeline & Expectations">
-		<div class="two-column">
-			<div class="column-content">
-				<p><strong>Typical Timeline (varies by species):</strong></p>
-				<ul>
-					<li><strong>Sterilization:</strong> 30 minutes - 2 hours</li>
-					<li><strong>Establishment:</strong> 2-6 weeks for initial growth</li>
-					<li><strong>Multiplication:</strong> 3-8 weeks per cycle</li>
-					<li><strong>Rooting:</strong> 2-4 weeks for root development</li>
-					<li><strong>Acclimatization:</strong> 2-4 weeks gradual transition</li>
-				</ul>
-				<p><strong>Total time:</strong> 2-6 months from start to finished plant. Some species are faster, others slower. Patience is essential!</p>
-			</div>
-			<div class="column-content">
-				<p><strong>Success Factors:</strong></p>
-				<ul>
-					<li>Start with easy species (African violets, Begonias)</li>
-					<li>Follow protocols precisely</li>
-					<li>Practice sterile technique consistently</li>
-					<li>Monitor cultures daily</li>
-					<li>Expect some failures - it's part of learning</li>
-					<li>Join online communities for support</li>
-				</ul>
-			</div>
+	<ContentBlock title="Timeline & Expectations" columns={3}>
+		<div>
+			<p><strong>Typical Timeline (varies by species):</strong></p>
+			<ul>
+				<li><strong>Sterilization:</strong> 30 minutes - 2 hours</li>
+				<li><strong>Establishment:</strong> 2-6 weeks for initial growth</li>
+				<li><strong>Multiplication:</strong> 3-8 weeks per cycle</li>
+				<li><strong>Rooting:</strong> 2-4 weeks for root development</li>
+				<li><strong>Acclimatization:</strong> 2-4 weeks gradual transition</li>
+			</ul>
+		</div>
+		<div>
+			<p><strong>Total time:</strong> 2-6 months from start to finished plant. Some species are faster, others slower. Patience is essential!</p>
+		</div>
+		<div>
+			<p><strong>Success Factors:</strong></p>
+			<ul>
+				<li>Start with easy species (African violets, Begonias)</li>
+				<li>Follow protocols precisely</li>
+				<li>Practice sterile technique consistently</li>
+				<li>Monitor cultures daily</li>
+				<li>Expect some failures - it's part of learning</li>
+				<li>Join online communities for support</li>
+			</ul>
 		</div>
 	</ContentBlock>
 	

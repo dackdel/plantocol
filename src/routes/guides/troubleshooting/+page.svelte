@@ -23,8 +23,8 @@
 </svelte:head>
 
 <ProtocolLayout {title} {badges} {introColumns} {source}>
-	<ContentBlock title="1. Contamination: The Silent Culture Killer">
-		<div class="problem-section">
+	<ContentBlock title="1. Contamination: The Silent Culture Killer" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge critical">Critical</span>
 				<h3>Problem Description</h3>
@@ -39,7 +39,8 @@
 				<li><strong>Perfect Surface Sterilization:</strong> Use 1-10% sodium hypochlorite solution followed by multiple sterile water rinses</li>
 				<li><strong>Consider PPM™:</strong> Plant Preservative Mixture can suppress contamination (follow dosage carefully)</li>
 			</ul>
-			
+		</div>
+		<div>
 			<h4>Solution Steps</h4>
 			<ol>
 				<li><strong>Immediate Isolation:</strong> Remove contaminated cultures from clean area</li>
@@ -51,8 +52,8 @@
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="2. Vitrification (Hyperhydricity): The Glass Plant Syndrome">
-		<div class="problem-section">
+	<ContentBlock title="2. Vitrification (Hyperhydricity): The Glass Plant Syndrome" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge moderate">Moderate</span>
 				<h3>Problem Description</h3>
@@ -69,7 +70,8 @@
 				<li>High cytokinin levels</li>
 				<li>Excessive agar concentration</li>
 			</ul>
-			
+		</div>
+		<div>
 			<h4>Control Solutions</h4>
 			<ol>
 				<li><strong>Improve Ventilation:</strong> Use gas-permeable lids or periodically open vessels under sterile conditions</li>
@@ -82,8 +84,8 @@
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="3. Browning of Media and Explants: Phenolic Oxidation">
-		<div class="problem-section">
+	<ContentBlock title="3. Browning of Media and Explants: Phenolic Oxidation" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge moderate">Moderate</span>
 				<h3>Problem Description</h3>
@@ -96,6 +98,11 @@
 				<li><strong>Antioxidants:</strong> Include ascorbic acid and citric acid to prevent oxidation</li>
 				<li><strong>Polyphenol Inhibitors:</strong> Use compounds like sulfur dioxide or sodium chloride</li>
 				<li><strong>Frequent Subculturing:</strong> Regular transfers prevent compound accumulation</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Solutions</h4>
+			<ol start="5">
 				<li><strong>Light Optimization:</strong> Reduce exposure to minimize phenolic synthesis</li>
 				<li><strong>Pre-treatment:</strong> Soak explants in water to leach phenolic compounds</li>
 				<li><strong>Explant Orientation:</strong> Try vertical placement to reduce browning</li>
@@ -103,8 +110,8 @@
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="4. Recalcitrance: When Plants Refuse to Cooperate">
-		<div class="problem-section">
+	<ContentBlock title="4. Recalcitrance: When Plants Refuse to Cooperate" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge severe">Severe</span>
 				<h3>Problem Description</h3>
@@ -116,6 +123,11 @@
 				<li><strong>Use Juvenile Material:</strong> Young plant tissues are more responsive to culture</li>
 				<li><strong>Pre-treatment:</strong> Spray donor plants with cytokinins to rejuvenate tissues</li>
 				<li><strong>Media Experimentation:</strong> Try different formulations with varying hormone concentrations</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Strategies</h4>
+			<ol start="4">
 				<li><strong>Explant Diversity:</strong> Test different tissue types (shoot tips, nodes, embryos)</li>
 				<li><strong>Environment Optimization:</strong> Adjust light, temperature, and humidity conditions</li>
 				<li><strong>Patience and Persistence:</strong> Some species require multiple attempts with slight modifications</li>
@@ -123,8 +135,8 @@
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="5. Somaclonal Variation: Genetic Instability">
-		<div class="problem-section">
+	<ContentBlock title="5. Somaclonal Variation: Genetic Instability" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge moderate">Moderate</span>
 				<h3>Problem Description</h3>
@@ -137,6 +149,11 @@
 				<li><strong>Add Salicylic Acid:</strong> Growth regulator shown to reduce variation occurrence</li>
 				<li><strong>Gentle Handling:</strong> Prevent physical damage during transfers (avoid hot instruments)</li>
 				<li><strong>Avoid 2,4-D:</strong> High synthetic auxin concentrations increase variation</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Techniques</h4>
+			<ol start="5">
 				<li><strong>Use Axillary Buds:</strong> More genetically stable than callus culture</li>
 				<li><strong>Minimize Callus Phase:</strong> If using callus, keep this stage as short as possible</li>
 				<li><strong>Fresh Starts:</strong> Periodically reinitiate cultures from new explants</li>
@@ -144,8 +161,8 @@
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="6. Acclimatization Failure: The Final Hurdle">
-		<div class="problem-section">
+	<ContentBlock title="6. Acclimatization Failure: The Final Hurdle" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge critical">Critical</span>
 				<h3>Problem Description</h3>
@@ -157,6 +174,11 @@
 				<li><strong>Strong Root Development:</strong> Optimize rooting medium before transplanting</li>
 				<li><strong>Gradual Humidity Reduction:</strong> Progressively open culture vessels over days/weeks</li>
 				<li><strong>Proper Potting Mix:</strong> Use well-draining, sterile growing medium</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Strategies</h4>
+			<ol start="4">
 				<li><strong>Initial Protection:</strong> Maintain high humidity and shade during transition</li>
 				<li><strong>Gradual Exposure:</strong> Slowly introduce higher light intensity and lower humidity</li>
 				<li><strong>Monitor Closely:</strong> Watch for wilting signs and adjust conditions accordingly</li>
@@ -164,8 +186,8 @@
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="7. Explant Oxidation: Rapid Browning Response">
-		<div class="problem-section">
+	<ContentBlock title="7. Explant Oxidation: Rapid Browning Response" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge severe">Severe</span>
 				<h3>Problem Description</h3>
@@ -176,14 +198,19 @@
 			<ol>
 				<li><strong>Work Quickly:</strong> Minimize time between cutting and culture placement</li>
 				<li><strong>Antioxidant Solution:</strong> Immediately immerse explants in chilled ascorbic acid or citric acid</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Steps</h4>
+			<ol start="3">
 				<li><strong>Activated Charcoal:</strong> Include in initial culture medium</li>
 				<li><strong>Cold Treatment:</strong> Keep explants and solutions chilled during preparation</li>
 			</ol>
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="8. Nutritional Deficiencies: Starving Your Cultures">
-		<div class="problem-section">
+	<ContentBlock title="8. Nutritional Deficiencies: Starving Your Cultures" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge moderate">Moderate</span>
 				<h3>Problem Description</h3>
@@ -194,14 +221,19 @@
 			<ol>
 				<li><strong>Balanced Media:</strong> Ensure proper macro- and micronutrient ratios</li>
 				<li><strong>Proven Formulations:</strong> Start with tested formulations like MS medium</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Solutions</h4>
+			<ol start="3">
 				<li><strong>Species-Specific Adjustments:</strong> Modify standard media for particular plant needs</li>
 				<li><strong>Quality Control:</strong> Use fresh, high-quality chemicals and distilled water</li>
 			</ol>
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="9. Callus Overgrowth: Uncontrolled Cell Division">
-		<div class="problem-section">
+	<ContentBlock title="9. Callus Overgrowth: Uncontrolled Cell Division" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge moderate">Moderate</span>
 				<h3>Problem Description</h3>
@@ -213,14 +245,19 @@
 				<li><strong>Adjust Hormone Balance:</strong> Increase cytokinin-to-auxin ratio for shoot development</li>
 				<li><strong>Fresh Medium Transfer:</strong> Move callus to medium with adjusted hormone levels</li>
 				<li><strong>Regular Monitoring:</strong> Track hormone ratios and adjust based on response</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Methods</h4>
+			<ol start="4">
 				<li><strong>Ethylene Management:</strong> Use inhibitors or reduce ethylene production</li>
 				<li><strong>Antioxidants:</strong> Add compounds to enhance cell wall integrity</li>
 			</ol>
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="10. Slow Growth Rates: The Waiting Game">
-		<div class="problem-section">
+	<ContentBlock title="10. Slow Growth Rates: The Waiting Game" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge low">Low Priority</span>
 				<h3>Problem Description</h3>
@@ -231,14 +268,19 @@
 			<ol>
 				<li><strong>Environment Optimization:</strong> Perfect temperature ({convertTemp(22, $unitSystem)}-{convertTemp(25, $unitSystem)}) and light conditions</li>
 				<li><strong>Growth Stimulants:</strong> Add gibberellic acid (GA3) to accelerate development</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Solutions</h4>
+			<ol start="3">
 				<li><strong>pH Adjustment:</strong> Ensure media pH is correctly adjusted ({displayPH(5.6)}-{displayPH(5.8)})</li>
 				<li><strong>Fresh Media:</strong> Replace old or degraded medium with fresh preparations</li>
 			</ol>
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="11. Rooting Issues: Failure to Develop Strong Roots">
-		<div class="problem-section">
+	<ContentBlock title="11. Rooting Issues: Failure to Develop Strong Roots" columns={2}>
+		<div>
 			<div class="problem-header">
 				<span class="problem-badge moderate">Moderate</span>
 				<h3>Problem Description</h3>
@@ -250,40 +292,48 @@
 				<li><strong>Hormone Adjustment:</strong> Include IBA or other rooting hormones in medium</li>
 				<li><strong>Aeration:</strong> Provide root aeration in liquid culture systems</li>
 				<li><strong>Dedicated Rooting Medium:</strong> Transfer shoots to high-auxin, low-cytokinin medium</li>
+			</ol>
+		</div>
+		<div>
+			<h4 style="margin-top: 53px;">More Solutions</h4>
+			<ol start="4">
 				<li><strong>Environmental Modification:</strong> Darken culture vessels during rooting phase</li>
 				<li><strong>Gelling Agent Changes:</strong> Try different agents or reduce agar concentration</li>
 			</ol>
 		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="General Troubleshooting Protocol">
-		<h3>Step 1: Observation and Documentation</h3>
-		<ul>
-			<li>Record all symptoms with photos and detailed notes</li>
-			<li>Track environmental conditions and media compositions</li>
-			<li>Note timing of problem appearance</li>
-		</ul>
-		
-		<h3>Step 2: Systematic Analysis</h3>
-		<ul>
-			<li>Review recent protocol changes or environmental shifts</li>
-			<li>Check equipment functionality and calibration</li>
-			<li>Examine chemical quality and storage conditions</li>
-		</ul>
-		
-		<h3>Step 3: Controlled Testing</h3>
-		<ul>
-			<li>Make single variable changes to isolate causes</li>
-			<li>Test solutions on small culture batches first</li>
-			<li>Compare with control cultures when possible</li>
-		</ul>
-		
-		<h3>Step 4: Implementation and Monitoring</h3>
-		<ul>
-			<li>Apply solutions systematically across affected cultures</li>
-			<li>Monitor progress with regular observations</li>
-			<li>Adjust approaches based on response</li>
-		</ul>
+	<ContentBlock title="General Troubleshooting Protocol" columns={2}>
+		<div>
+			<h3>Step 1: Observation and Documentation</h3>
+			<ul>
+				<li>Record all symptoms with photos and detailed notes</li>
+				<li>Track environmental conditions and media compositions</li>
+				<li>Note timing of problem appearance</li>
+			</ul>
+			
+			<h3>Step 2: Systematic Analysis</h3>
+			<ul>
+				<li>Review recent protocol changes or environmental shifts</li>
+				<li>Check equipment functionality and calibration</li>
+				<li>Examine chemical quality and storage conditions</li>
+			</ul>
+		</div>
+		<div>
+			<h3>Step 3: Controlled Testing</h3>
+			<ul>
+				<li>Make single variable changes to isolate causes</li>
+				<li>Test solutions on small culture batches first</li>
+				<li>Compare with control cultures when possible</li>
+			</ul>
+			
+			<h3>Step 4: Implementation and Monitoring</h3>
+			<ul>
+				<li>Apply solutions systematically across affected cultures</li>
+				<li>Monitor progress with regular observations</li>
+				<li>Adjust approaches based on response</li>
+			</ul>
+		</div>
 	</ContentBlock>
 	
 	<ContentBlock title="Prevention: The Best Medicine">
@@ -339,10 +389,6 @@
 </ProtocolLayout>
 
 <style>
-	.problem-section {
-		margin-bottom: 32px;
-	}
-	
 	.problem-header {
 		display: flex;
 		align-items: center;

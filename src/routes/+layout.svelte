@@ -1,12 +1,19 @@
 <script>
 	import '../app.css';
 	import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
 	import UnitSelector from '$lib/components/UnitSelector.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
 	
 	let scrollY = 0;
 	let showBackToTop = false;
 	let scrollProgress = 0;
+	
+	// Loading screen state
+	let showLoading = true;
+	let fontsReady = false;
+	let currentImageIndex = 0;
+	const images = ['/1.webp', '/2.webp', '/3.webp'];
 	
 	$: showBackToTop = scrollY > 300;
 	
@@ -21,11 +28,54 @@
 			window.scrollTo({ top: 0, behavior: 'smooth' });
 		}
 	}
+	
+	onMount(async () => {
+		// Pick random initial image
+		currentImageIndex = Math.floor(Math.random() * images.length);
+		
+		// Wait for fonts to load to prevent FOUC (Flash of Unstyled Content)
+		try {
+			await document.fonts.ready;
+			fontsReady = true;
+		} catch (e) {
+			// Fallback if fonts API not supported
+			fontsReady = true;
+		}
+		
+		// Hide loading screen when page is fully loaded and fonts are ready
+		const hideLoader = () => {
+			if (fontsReady) {
+				showLoading = false;
+			}
+		};
+		
+		if (document.readyState === 'complete') {
+			hideLoader();
+		} else {
+			window.addEventListener('load', hideLoader);
+		}
+		
+		// Rotate images every 3 minutes
+		const rotationInterval = setInterval(() => {
+			currentImageIndex = Math.floor(Math.random() * images.length);
+		}, 180000); // 3 minutes = 180000ms
+		
+		return () => {
+			clearInterval(rotationInterval);
+		};
+	});
 </script>
 
 <svelte:window bind:scrollY />
 
-<div class="app">
+<!-- Loading screen -->
+{#if showLoading}
+	<div class="loading-screen">
+		<img src={images[currentImageIndex]} alt="Loading" class="loading-image" />
+	</div>
+{/if}
+
+<div class="app" class:fonts-loaded={fontsReady}>
 	<!-- Progress bar -->
 	<div class="progress-bar" style="width: {scrollProgress}%" />
 	
@@ -50,8 +100,43 @@
 </div>
 
 <style>
+	.loading-screen {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		background: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		z-index: 9999;
+		animation: fadeOut 0.3s ease-out forwards;
+		animation-delay: 0.7s;
+	}
+	
+	.loading-image {
+		max-width: 90vw;
+		max-height: 90vh;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+	}
+	
+	@keyframes fadeOut {
+		to {
+			opacity: 0;
+			pointer-events: none;
+		}
+	}
+	
 	.app {
 		min-height: 100vh;
+		visibility: hidden;
+	}
+	
+	.app.fonts-loaded {
+		visibility: visible;
 	}
 	
 	.progress-bar {

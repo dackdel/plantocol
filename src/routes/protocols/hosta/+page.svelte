@@ -50,26 +50,24 @@
 		</ul>
 	</ContentBlock>
 	
-	<ContentBlock title="Step 1: Explant Selection and Timing">
-		<div class="two-column">
-			<div>
-				<p><strong>Optimal Timing:</strong></p>
-				<ul>
-					<li>Early spring when shoots are 1-2 cm tall</li>
-					<li>Dormant crown tissue works well</li>
-					<li>Avoid summer collection (higher phenolic content)</li>
-					<li>Morning collection provides best results</li>
-				</ul>
-			</div>
-			<div>
-				<p><strong>Explant Types:</strong></p>
-				<ul>
-					<li><strong>Primary:</strong> Central crown tissue (1-2 cm sections)</li>
-					<li><strong>Alternative:</strong> Young leaf bases with meristematic tissue</li>
-					<li><strong>Size:</strong> Keep explants small to ensure sterilization penetration</li>
-					<li><strong>Quality:</strong> Use only healthy, vigorous tissue</li>
-				</ul>
-			</div>
+	<ContentBlock title="Step 1: Explant Selection and Timing" columns={2}>
+		<div>
+			<p><strong>Optimal Timing:</strong></p>
+			<ul>
+				<li>Early spring when shoots are 1-2 cm tall</li>
+				<li>Dormant crown tissue works well</li>
+				<li>Avoid summer collection (higher phenolic content)</li>
+				<li>Morning collection provides best results</li>
+			</ul>
+		</div>
+		<div>
+			<p><strong>Explant Types:</strong></p>
+			<ul>
+				<li><strong>Primary:</strong> Central crown tissue (1-2 cm sections)</li>
+				<li><strong>Alternative:</strong> Young leaf bases with meristematic tissue</li>
+				<li><strong>Size:</strong> Keep explants small to ensure sterilization penetration</li>
+				<li><strong>Quality:</strong> Use only healthy, vigorous tissue</li>
+			</ul>
 		</div>
 	</ContentBlock>
 	
@@ -92,88 +90,88 @@
 		</ol>
 	</ContentBlock>
 	
-	<ContentBlock title="Step 3: Culture Initiation">
-		<div class="two-column">
-			<div>
-				<p><strong>Explant Preparation:</strong></p>
-				<ul>
-					<li>Work within sterile environment (SAB or laminar flow)</li>
-					<li>Trim explants to 1-2 cm sections</li>
-					<li>Remove any browning tissue edges</li>
-					<li>Handle gently to avoid damage</li>
-				</ul>
-			</div>
-			<div>
-				<p><strong>Initiation Medium Formula:</strong></p>
-				<ul>
-					<li>MS basal medium</li>
-					<li>Sucrose {convertWeight(30, $unitSystem)}/L</li>
-					<li>BAP (cytokinin) 2.0 mg/L (higher than African violet)</li>
-					<li>NAA (auxin) 0.1 mg/L (more stable than IAA)</li>
-					<li>Agar {convertWeight(8, $unitSystem)}/L</li>
-					<li>{displayPH(5.7)}</li>
-				</ul>
-			</div>
+	<ContentBlock title="Step 3: Culture Initiation" columns={3}>
+		<div>
+			<p><strong>Explant Preparation:</strong></p>
+			<ul>
+				<li>Work within sterile environment (SAB or laminar flow)</li>
+				<li>Trim explants to 1-2 cm sections</li>
+				<li>Remove any browning tissue edges</li>
+				<li>Handle gently to avoid damage</li>
+			</ul>
 		</div>
-		
-		<p><strong>Culture Conditions:</strong> Temperature {convertTemp(20, $unitSystem)}-{convertTemp(22, $unitSystem)} (cooler than African violet), 16-hour photoperiod with moderate light intensity, monitor for browning (common in Hostas).</p>
+		<div>
+			<p><strong>Initiation Medium Formula:</strong></p>
+			<ul>
+				<li>MS basal medium</li>
+				<li>Sucrose {convertWeight(30, $unitSystem)}/L</li>
+				<li>BAP (cytokinin) 2.0 mg/L (higher than African violet)</li>
+				<li>NAA (auxin) 0.1 mg/L (more stable than IAA)</li>
+				<li>Agar {convertWeight(8, $unitSystem)}/L</li>
+				<li>{displayPH(5.7)}</li>
+			</ul>
+		</div>
+		<div>
+			<p><strong>Culture Conditions:</strong></p>
+			<ul>
+				<li>Temperature: {convertTemp(20, $unitSystem)}-{convertTemp(22, $unitSystem)} (cooler than African violet)</li>
+				<li>16-hour photoperiod with moderate light intensity</li>
+				<li>Monitor for browning (common in Hostas)</li>
+			</ul>
+		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="Step 4: Multiplication Phase (4-5 weeks)">
-		<div class="two-column">
-			<div>
-				<p><strong>Growth Monitoring:</strong></p>
-				<ul>
-					<li>Shoots typically appear after 3-4 weeks</li>
-					<li>3-5 shoots per explant expected</li>
-					<li>Healthy shoots show characteristic leaf variegation</li>
-					<li>Watch for browning (add activated charcoal if needed)</li>
-				</ul>
-			</div>
-			<div>
-				<p><strong>Subculturing Process:</strong></p>
-				<ul>
-					<li>Transfer to fresh multiplication medium every 4-5 weeks (slightly longer than African violet)</li>
-					<li>Carefully separate individual shoots</li>
-					<li>Watch for vigor decline in later subcultures</li>
-					<li>Reinitiate from fresh explants every 6-8 subcultures</li>
-				</ul>
-			</div>
+	<ContentBlock title="Step 4: Multiplication Phase (4-5 weeks)" columns={3}>
+		<div>
+			<p><strong>Growth Monitoring:</strong></p>
+			<ul>
+				<li>Shoots typically appear after 3-4 weeks</li>
+				<li>3-5 shoots per explant expected</li>
+				<li>Healthy shoots show characteristic leaf variegation</li>
+				<li>Watch for browning (add activated charcoal if needed)</li>
+			</ul>
 		</div>
-		
-		<p><strong>Multiplication Medium Adjustment:</strong></p>
-		<ul>
-			<li>Maintain BAP at 2.0 mg/L for strong multiplication</li>
-			<li>Consider reducing to 1.5 mg/L if excessive callus forms</li>
-			<li>NAA can be reduced to 0.05 mg/L in later subcultures</li>
-		</ul>
+		<div>
+			<p><strong>Subculturing Process:</strong></p>
+			<ul>
+				<li>Transfer to fresh multiplication medium every 4-5 weeks (slightly longer than African violet)</li>
+				<li>Carefully separate individual shoots</li>
+				<li>Watch for vigor decline in later subcultures</li>
+				<li>Reinitiate from fresh explants every 6-8 subcultures</li>
+			</ul>
+		</div>
+		<div>
+			<p><strong>Multiplication Medium Adjustment:</strong></p>
+			<ul>
+				<li>Maintain BAP at 2.0 mg/L for strong multiplication</li>
+				<li>Consider reducing to 1.5 mg/L if excessive callus forms</li>
+				<li>NAA can be reduced to 0.05 mg/L in later subcultures</li>
+			</ul>
+		</div>
 	</ContentBlock>
 	
-	<ContentBlock title="Step 5: Rooting Protocol (2-4 weeks)">
-		<div class="two-column">
-			<div>
-				<p><strong>Rooting Medium Formula:</strong></p>
-				<ul>
-					<li>Full-strength MS medium</li>
-					<li>Sucrose {convertWeight(20, $unitSystem)}/L</li>
-					<li>IBA (auxin) 1.0 mg/L (essential for Hosta rooting)</li>
-					<li>No cytokinin</li>
-					<li>Agar {convertWeight(8, $unitSystem)}/L</li>
-					<li>{displayPH(5.7)}</li>
-				</ul>
-			</div>
-			<div>
-				<p><strong>Rooting Conditions:</strong></p>
-				<ul>
-					<li>Maintain cool temperatures ({convertTemp(20, $unitSystem)}-{convertTemp(22, $unitSystem)})</li>
-					<li>Reduce light intensity during rooting</li>
-					<li>Expect 2-4 weeks for root development</li>
-					<li>Roots should be 2-3 cm long before transplanting</li>
-				</ul>
-			</div>
+	<ContentBlock title="Step 5: Rooting Protocol (2-4 weeks)" columns={2}>
+		<div>
+			<p><strong>Rooting Medium Formula:</strong></p>
+			<ul>
+				<li>Full-strength MS medium</li>
+				<li>Sucrose {convertWeight(20, $unitSystem)}/L</li>
+				<li>IBA (auxin) 1.0 mg/L (essential for Hosta rooting)</li>
+				<li>No cytokinin</li>
+				<li>Agar {convertWeight(8, $unitSystem)}/L</li>
+				<li>{displayPH(5.7)}</li>
+			</ul>
 		</div>
-		
-		<p class="tip-box">💡 <strong>Tip:</strong> Hostas require IBA for reliable rooting. If roots don't develop, try pulse treatment (5 mg/L IBA for 48 hours).</p>
+		<div>
+			<p><strong>Rooting Conditions:</strong></p>
+			<ul>
+				<li>Maintain cool temperatures ({convertTemp(20, $unitSystem)}-{convertTemp(22, $unitSystem)})</li>
+				<li>Reduce light intensity during rooting</li>
+				<li>Expect 2-4 weeks for root development</li>
+				<li>Roots should be 2-3 cm long before transplanting</li>
+			</ul>
+			<p class="tip-box">💡 <strong>Tip:</strong> Hostas require IBA for reliable rooting. If roots don't develop, try pulse treatment (5 mg/L IBA for 48 hours).</p>
+		</div>
 	</ContentBlock>
 	
 	<ContentBlock title="Step 6: Acclimatization (3-4 weeks)">
