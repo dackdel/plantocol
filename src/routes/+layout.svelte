@@ -3,6 +3,8 @@
 	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
+	import { Analytics } from '@vercel/analytics/sveltekit';
+	import { SpeedInsights } from '@vercel/speed-insights/sveltekit';
 	import UnitSelector from '$lib/components/UnitSelector.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
 	
@@ -94,6 +96,10 @@
 	<UnitSelector />
 	
 	<slot />
+	
+	<!-- Vercel Analytics & Speed Insights -->
+	<Analytics />
+	<SpeedInsights />
 	
 	<!-- Back to top button -->
 	{#if showBackToTop}
