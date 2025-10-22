@@ -1,6 +1,7 @@
 <script>
 	import '../app.css';
 	import { browser } from '$app/environment';
+	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import UnitSelector from '$lib/components/UnitSelector.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
@@ -8,6 +9,13 @@
 	let scrollY = 0;
 	let showBackToTop = false;
 	let scrollProgress = 0;
+	
+	// Scroll to top on navigation
+	afterNavigate(() => {
+		if (browser) {
+			window.scrollTo({ top: 0, behavior: 'instant' });
+		}
+	});
 	
 	// Loading screen state
 	let showLoading = true;
