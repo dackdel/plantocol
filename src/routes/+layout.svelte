@@ -3,8 +3,9 @@
 	import { browser } from '$app/environment';
 	import { afterNavigate } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import { Analytics } from '@vercel/analytics/sveltekit';
-	import { SpeedInsights } from '@vercel/speed-insights/sveltekit';
+	import { dev } from '$app/environment';
+	import { inject } from '@vercel/analytics';
+	import { injectSpeedInsights } from '@vercel/speed-insights';
 	import UnitSelector from '$lib/components/UnitSelector.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
 	
@@ -40,6 +41,10 @@
 	}
 	
 	onMount(async () => {
+		// Initialize Vercel Analytics and Speed Insights
+		inject({ mode: dev ? 'development' : 'production' });
+		injectSpeedInsights();
+		
 		// Pick random initial image
 		currentImageIndex = Math.floor(Math.random() * images.length);
 		
@@ -96,10 +101,6 @@
 	<UnitSelector />
 	
 	<slot />
-	
-	<!-- Vercel Analytics & Speed Insights -->
-	<Analytics />
-	<SpeedInsights />
 	
 	<!-- Back to top button -->
 	{#if showBackToTop}
