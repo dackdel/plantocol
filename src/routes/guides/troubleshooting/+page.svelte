@@ -436,6 +436,13 @@
 		border: 1px solid #2e7d32;
 	}
 	
+	h3 {
+		margin: 20px 0 12px 0;
+		font-size: 17px;
+		font-weight: 500;
+		color: #222;
+	}
+	
 	h4 {
 		margin: 20px 0 12px 0;
 		font-size: 16px;
