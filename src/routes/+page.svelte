@@ -19,7 +19,8 @@
 				{ name: 'African Violet', path: '/protocols/african-violet', badge: '⭐ Beginner', detail: 'Saintpaulia ionantha' },
 				{ name: 'Monstera', path: '/protocols/monstera', badge: 'Easy', detail: 'Swiss Cheese Plant' },
 				{ name: 'Begonia', path: '/protocols/begonia', badge: 'Easy', detail: 'General Protocol' },
-				{ name: 'Hosta', path: '/protocols/hosta', badge: '⭐⭐ Intermediate', detail: 'Ornamental Species' }
+				{ name: 'Hosta', path: '/protocols/hosta', badge: '⭐⭐ Intermediate', detail: 'Ornamental Species' },
+				{ name: 'Sarracenia', path: '/protocols/sarracenia', badge: '⭐⭐ Intermediate', detail: 'Pitcher Plants (Endangered)' }
 			]
 		},
 		{
