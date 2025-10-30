@@ -14,7 +14,7 @@
 		'These protocols focus on Brazilian Atlantic Forest species and demonstrate multiple regenerative pathways including nodule cluster culture, somatic embryogenesis, and temporary immersion systems for mass propagation.',
 		'The morphogenetic pathway based on nodule cluster culture is stressed as it appears recurrent in bromeliads, results in high regenerative rates, and is easy to handle. All protocols follow a systematic 5-stage micropropagation process.'
 	];
-	const source = 'Guerra, M.P. & Dal Vesco, L.L. (2010). Strategies for the Micropropagation of Bromeliads. Methods in Molecular Biology, vol. 589. DOI: 10.1007/978-1-60327-114-1_6';
+	const source = '';
 </script>
 
 <svelte:head>
