@@ -9,6 +9,7 @@
 		{ id: 'african-violet', name: 'African Violet Protocol', path: '/protocols/african-violet' },
 		{ id: 'monstera', name: 'Monstera Protocol', path: '/protocols/monstera' },
 		{ id: 'begonia', name: 'Begonia Protocol', path: '/protocols/begonia' },
+		{ id: 'bromeliad', name: 'Bromeliad Protocols', path: '/protocols/bromeliad' },
 		{ id: 'hosta', name: 'Hosta Protocol', path: '/protocols/hosta' },
 		{ id: 'sarracenia', name: 'Sarracenia Protocol', path: '/protocols/sarracenia' },
 		{ id: 'troubleshooting', name: 'Troubleshooting Guide', path: '/guides/troubleshooting' }
