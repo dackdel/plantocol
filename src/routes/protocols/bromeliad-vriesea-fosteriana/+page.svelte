@@ -9,15 +9,60 @@
 	const title = 'Vriesea fosteriana<br>Large Ornamental';
 	const badges = [
 		'TDZ Protocol',
-		'Encapsulation Available',
-		'Survival: 85-98%'
+		'PBZ: 4 μM',
+		'Encapsulation Available'
 	];
 	const introColumns = [
-		'Vriesea fosteriana is a large bromeliad species spreading from Brazil to Mexico. It shows broad, mid-green leaves with a reddish-brown band on both sides. The foliage can grow up to 1-m long forming a dense rosette.',
+		'Vriesea fosteriana is a large bromeliad species spreading from Brazil to Mexico. It shows broad, mid-green leaves with a reddish-brown band on both sides. The foliage can grow up to 1-m long forming a dense rosette. The reference workflow follows the LFDGV/CCA/UFSC benchmark described in Jain & Ochatt (2010).',
 		'From the center a conspicuous flower stalk reaches upwards to 1.5 m, developing a yellow flower from each bract. This species is highly valued in ornamental horticulture.',
 		'Two protocols are provided: standard TDZ multiplication for mass propagation, and an innovative encapsulation protocol for synthetic seed production and long-term storage.'
 	];
-	const source = 'Guerra & Dal Vesco (2010), Methods in Molecular Biology, vol. 589';
+
+	const msComponents = [
+		{ component: 'NH₄NO₃', stock: '82.5 g/L', volume: '20 mL', final: '1,650 mg/L' },
+		{ component: 'KNO₃', stock: '95.0 g/L', volume: '20 mL', final: '1,900 mg/L' },
+		{ component: 'CaCl₂·2H₂O', stock: '88.0 g/L', volume: '5 mL', final: '440 mg/L' },
+		{ component: 'KH₂PO₄', stock: '34 g/L', volume: '5 mL', final: '170 mg/L' },
+		{ component: 'MgSO₄·7H₂O', stock: '74 g/L', volume: '5 mL', final: '370 mg/L' },
+		{ component: 'Fe-EDTA solution', stock: '37.3 & 27.8 g/L', volume: '10 mL', final: 'Fe chelate pair' },
+		{ component: 'Micronutrient mix', stock: '1.24–0.0055 g/L', volume: '5 mL', final: 'Boron, iodine, molybdenum, cobalt' },
+		{ component: 'Morel vitamins', stock: '1–100 mg/L', volume: 'full strength', final: 'Thiamine, pyridoxine, nicotinic acid, Ca pantothenate, myo-inositol, glycine' },
+		{ component: 'Sucrose', stock: '-', volume: '-', finalWeight: 30 }
+	];
+
+	const timelineStandard = [
+		{ window: 'Stage 1 · Weeks 0–28', label: 'Induction', notes: 'NAA 2 μM + BAP 4 μM, 3× subculture at 6-week intervals' },
+		{ window: 'Stage 2 · Variable', label: 'Multiplication', notes: 'TDZ 0.1 μM, 14:1 multiplication rate' },
+		{ window: 'Stage 3 · Weeks 28–38', label: 'Elongation', notes: 'PGR-free MS medium' },
+		{ window: 'Stage 4 · Weeks 38–47', label: 'Acclimatization', notes: '2:1:1 substrate, 98% survival' }
+	];
+
+	const timelineEncapsulation = [
+		{ window: 'Prep · Weeks 0–24', label: 'Standard Multiplication', notes: '3-4 subcultures at 5-7 week intervals' },
+		{ window: 'Stage 1 · Weeks 24–32', label: 'PBZ Induction', notes: 'NAA 2 μM + BAP 4 μM + PBZ 4 μM, 13:1 rate' },
+		{ window: 'Stage 2 · Day 1', label: 'Encapsulation', notes: '1% alginate + ½ MS + GA₃ 5 μM, 10 min CaCl₂' },
+		{ window: 'Stage 3 · Weeks 32–36', label: 'Cold Storage', notes: '5°C for 4 weeks' },
+		{ window: 'Stage 4 · Weeks 36–41', label: 'Ex Vitro Conversion', notes: 'Vermiculite in phytotron, ¼ MS foliar' },
+		{ window: 'Stage 5 · Weeks 41–49', label: 'Final Acclimatization', notes: '85% survival, then 10 more weeks in greenhouse' }
+	];
+
+	const protocolComparison = [
+		{ aspect: 'Multiplication Rate', standard: '14:1', encapsulation: '13:1' },
+		{ aspect: 'Survival Rate', standard: '98%', encapsulation: '85%' },
+		{ aspect: 'Storage Capability', standard: 'Limited', encapsulation: '4 weeks at 5°C' },
+		{ aspect: 'Acclimatization', standard: 'In vitro → ex vitro', encapsulation: 'Direct ex vitro' },
+		{ aspect: 'Key Advantage', standard: 'Higher survival', encapsulation: 'Storage & transport' },
+		{ aspect: 'Best For', standard: 'Mass propagation', encapsulation: 'Germplasm conservation' }
+	];
+
+	const encapsulationMatrix = [
+		{ step: 'Alginate Matrix', composition: '1% sodium alginate in ½ MS + GA₃ 5 μM' },
+		{ step: 'Complexation', composition: '50 mM CaCl₂ for 10 minutes' },
+		{ step: 'Decomplexation', composition: '100 mM KNO₃ for 20 minutes before sowing' },
+		{ step: 'Sowing Substrate', composition: 'Vermiculite in 220-cell trays (13 cm³ each)' }
+	];
+
+	const source = 'Guerra & Dal Vesco (2010) in Jain & Ochatt (2010), Methods in Molecular Biology, vol. 589';
 </script>
 
 <svelte:head>
@@ -25,6 +70,52 @@
 </svelte:head>
 
 <ProtocolLayout {title} {badges} {introColumns} {source}>
+	<ContentBlock title="Basal Medium Reference (MS + Morel)">
+		<p class="microcopy">Both protocols use Murashige & Skoog salts plus Morel vitamins as the basal medium.</p>
+		<div class="data-table-wrapper">
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>Component</th>
+						<th>Stock</th>
+						<th>Volume</th>
+						<th>Final in 1 L</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each msComponents as row}
+						<tr>
+							<td>{row.component}</td>
+							<td>{row.stock}</td>
+							<td>{row.volume}</td>
+							<td>
+								{#if row.final}
+									{row.final}
+								{:else if row.finalWeight}
+									{convertWeight(row.finalWeight, $unitSystem)}/L
+								{:else}
+									—
+								{/if}
+							</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+	</ContentBlock>
+
+	<ContentBlock title="Standard Protocol Timeline (PDF Benchmark)">
+		<div class="timeline-grid">
+			{#each timelineStandard as item}
+				<div class="timeline-card">
+					<p class="timeline-window">{item.window}</p>
+					<p class="timeline-label">{item.label}</p>
+					<p class="timeline-notes">{item.notes}</p>
+				</div>
+			{/each}
+		</div>
+	</ContentBlock>
+
 	<ContentBlock title="Standard Protocol: Direct Organogenesis with TDZ">
 		<div class="protocol-section">
 			<h4>Stage 1: Induction (10 weeks + 18 weeks subculture)</h4>
@@ -233,48 +324,62 @@
 		</div>
 	</ContentBlock>
 
+	<ContentBlock title="Encapsulation Timeline (PDF Benchmark)">
+		<div class="timeline-grid">
+			{#each timelineEncapsulation as item}
+				<div class="timeline-card">
+					<p class="timeline-window">{item.window}</p>
+					<p class="timeline-label">{item.label}</p>
+					<p class="timeline-notes">{item.notes}</p>
+				</div>
+			{/each}
+		</div>
+	</ContentBlock>
+
+	<ContentBlock title="Encapsulation Matrix">
+		<p class="microcopy">Critical steps for synthetic seed production from the PDF benchmark.</p>
+		<div class="data-table-wrapper">
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>Step</th>
+						<th>Composition</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each encapsulationMatrix as row}
+						<tr>
+							<td><strong>{row.step}</strong></td>
+							<td>{row.composition}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+	</ContentBlock>
+
 	<ContentBlock title="Protocol Comparison">
-		<table>
-			<thead>
-				<tr>
-					<th>Aspect</th>
-					<th>Standard TDZ</th>
-					<th>Encapsulation</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><strong>Multiplication Rate</strong></td>
-					<td>14:1</td>
-					<td>13:1</td>
-				</tr>
-				<tr>
-					<td><strong>Survival Rate</strong></td>
-					<td>98%</td>
-					<td>85%</td>
-				</tr>
-				<tr>
-					<td><strong>Storage Capability</strong></td>
-					<td>Limited</td>
-					<td>4 weeks at 5°C</td>
-				</tr>
-				<tr>
-					<td><strong>Acclimatization</strong></td>
-					<td>In vitro → ex vitro</td>
-					<td>Direct ex vitro</td>
-				</tr>
-				<tr>
-					<td><strong>Key Advantage</strong></td>
-					<td>Higher survival</td>
-					<td>Storage & transport</td>
-				</tr>
-				<tr>
-					<td><strong>Best For</strong></td>
-					<td>Mass propagation</td>
-					<td>Germplasm conservation</td>
-				</tr>
-			</tbody>
-		</table>
+		<p class="microcopy">Choose standard protocol for maximum survival or encapsulation for storage and transport.</p>
+		<div class="data-table-wrapper">
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>Aspect</th>
+						<th>Standard TDZ</th>
+						<th>Encapsulation</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each protocolComparison as row}
+						<tr>
+							<td><strong>{row.aspect}</strong></td>
+							<td>{row.standard}</td>
+							<td>{row.encapsulation}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
 	</ContentBlock>
 
 	<ContentBlock title="Key Success Factors">
@@ -303,5 +408,100 @@
 	
 	.protocol-section h4:first-child {
 		margin-top: 0;
+	}
+
+	.microcopy {
+		font-size: 0.95rem;
+		font-weight: 500;
+		letter-spacing: -0.01em;
+		color: #4a5568;
+		margin-bottom: 0.5rem;
+		font-family: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	}
+
+	.data-table-wrapper {
+		overflow-x: auto;
+		margin-top: 1rem;
+	}
+
+	.data-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-family: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-size: 0.95rem;
+		border-spacing: 0;
+	}
+
+	.data-table thead th {
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #718096;
+		font-weight: 600;
+		padding: 0.8rem;
+		border-bottom: 1px solid #e2e8f0;
+		background: #f8fafc;
+	}
+
+	.data-table tbody td {
+		padding: 0.85rem;
+		border-bottom: 1px solid #edf2f7;
+		color: #2d3748;
+	}
+
+	.data-table tbody tr:nth-child(odd) td {
+		background: #fcfdff;
+	}
+
+	.timeline-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 1.25rem;
+		margin-top: 1rem;
+	}
+
+	.timeline-card {
+		border: 1px solid #e2e8f0;
+		border-radius: 14px;
+		padding: 1rem;
+		background: #fff;
+		box-shadow: 0 15px 25px rgba(15, 23, 42, 0.08);
+	}
+
+	.timeline-window {
+		font-size: 0.78rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #a0aec0;
+		font-weight: 600;
+	}
+
+	.timeline-label {
+		font-size: 1.05rem;
+		font-weight: 600;
+		margin: 0.25rem 0;
+		color: #1a202c;
+	}
+
+	.timeline-notes {
+		font-size: 0.95rem;
+		color: #4a5568;
+		line-height: 1.5;
+	}
+
+	.step-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.step-list li {
+		margin-bottom: 1rem;
+	}
+
+	.step-number {
+		font-weight: 600;
+		margin-right: 0.5rem;
+		font-family: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	}
 </style>

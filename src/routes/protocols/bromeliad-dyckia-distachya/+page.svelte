@@ -8,16 +8,44 @@
 
 	const title = 'Dyckia distachya<br>Endemic Brazilian Bromeliad';
 	const badges = [
-		'2 Protocol Options',
+		'Endangered Species',
 		'Somatic Embryogenesis',
-		'Direct Organogenesis'
+		'PBZ: 6 μM'
 	];
 	const introColumns = [
-		'Dyckia genus (Pitcairnioideae) comprises 121 species occurring exclusively in southwest South America. Dyckia distachya is an endemic and endangered bromeliad native to western Santa Catarina State, southern Brazil.',
+		'Dyckia genus (Pitcairnioideae) comprises 121 species occurring exclusively in southwest South America. Dyckia distachya is an endemic and endangered bromeliad native to western Santa Catarina State, southern Brazil. The reference workflow follows the LFDGV/CCA/UFSC benchmark described in Jain & Ochatt (2010).',
 		'This bromeliad shows several ornamental features and occurs in the Brazilian Atlantic Forest, considered one of the most important plant diversity centers and a biodiversity hotspot. Most bromeliads in this biome are endemic.',
 		'Two regenerative protocols are provided: somatic embryogenesis using Picloram induction, and direct organogenesis from seeds using BAP/Kinetin. Both serve conservation and commercial propagation needs.'
 	];
-	const source = 'Guerra & Dal Vesco (2010), Methods in Molecular Biology, vol. 589';
+
+	const timelineA = [
+		{ window: 'Stage 1 · Weeks 0–8', label: 'Induction (Dark)', notes: 'Picloram 5 μM, proembryogenic masses form' },
+		{ window: 'Stage 2 · Weeks 8–14', label: 'Development (Dark)', notes: 'Embryogenic cultures develop' },
+		{ window: 'Stage 3 · Weeks 14–18', label: 'Maturation (Light)', notes: '2-iP 5 μM + NAA 0.5 μM, embryo conversion' },
+		{ window: 'Stage 4 · Variable', label: 'Plantlet Development', notes: 'PGR-free medium' },
+		{ window: 'Stage 5 · Weeks 18–24', label: 'Acclimatization', notes: '6 weeks in controlled mist' }
+	];
+
+	const timelineB = [
+		{ window: 'Stage 1 · Day 0', label: 'Seed Sterilization', notes: '70% EtOH + 1.5% NaOCl' },
+		{ window: 'Stage 2 · Weeks 0–6', label: 'Induction', notes: 'BAP 2 μM + Kinetin 2 μM' },
+		{ window: 'Stage 3 · Weeks 6–12', label: 'Multiplication', notes: 'NAA 2 μM + BAP 4 μM + PBZ 6 μM' },
+		{ window: 'Stage 4 · Weeks 12–18', label: 'Elongation', notes: 'GA₃ 5 μM' },
+		{ window: 'Stage 5 · Weeks 18–36', label: 'Acclimatization', notes: '18 weeks, 92% survival' }
+	];
+
+	const protocolComparison = [
+		{ aspect: 'Explant', protocolA: 'Seeds from green capsules', protocolB: 'Seeds from mature capsules' },
+		{ aspect: 'Induction', protocolA: 'Picloram 5 μM (dark)', protocolB: 'BAP 2 μM + Kin 2 μM (light)' },
+		{ aspect: 'Pathway', protocolA: 'Somatic embryogenesis', protocolB: 'Direct organogenesis' },
+		{ aspect: 'Induction Time', protocolA: '14 weeks (dark)', protocolB: '6 weeks (light)' },
+		{ aspect: 'Multiplication', protocolA: '2-iP 5 μM + NAA 0.5 μM', protocolB: 'NAA + BAP + PBZ 6 μM' },
+		{ aspect: 'Acclimatization', protocolA: '6 weeks', protocolB: '18 weeks' },
+		{ aspect: 'Survival', protocolA: 'Not specified', protocolB: '92%' },
+		{ aspect: 'Best For', protocolA: 'High multiplication potential', protocolB: 'Faster, simpler protocol' }
+	];
+
+	const source = 'Guerra & Dal Vesco (2010) in Jain & Ochatt (2010), Methods in Molecular Biology, vol. 589';
 </script>
 
 <svelte:head>
@@ -217,58 +245,52 @@
 		</div>
 	</ContentBlock>
 
+	<ContentBlock title="Protocol A Timeline (PDF Benchmark)">
+		<div class="timeline-grid">
+			{#each timelineA as item}
+				<div class="timeline-card">
+					<p class="timeline-window">{item.window}</p>
+					<p class="timeline-label">{item.label}</p>
+					<p class="timeline-notes">{item.notes}</p>
+				</div>
+			{/each}
+		</div>
+	</ContentBlock>
+
+	<ContentBlock title="Protocol B Timeline (PDF Benchmark)">
+		<div class="timeline-grid">
+			{#each timelineB as item}
+				<div class="timeline-card">
+					<p class="timeline-window">{item.window}</p>
+					<p class="timeline-label">{item.label}</p>
+					<p class="timeline-notes">{item.notes}</p>
+				</div>
+			{/each}
+		</div>
+	</ContentBlock>
+
 	<ContentBlock title="Protocol Comparison">
-		<table>
-			<thead>
-				<tr>
-					<th>Aspect</th>
-					<th>Protocol A (Somatic Embryo)</th>
-					<th>Protocol B (Organogenesis)</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><strong>Explant</strong></td>
-					<td>Seeds from green capsules</td>
-					<td>Seeds from mature capsules</td>
-				</tr>
-				<tr>
-					<td><strong>Induction</strong></td>
-					<td>Picloram (5 μM) in dark</td>
-					<td>BAP (2 μM) + Kin (2 μM) in light</td>
-				</tr>
-				<tr>
-					<td><strong>Pathway</strong></td>
-					<td>Proembryogenic → embryogenic → plantlet</td>
-					<td>Direct shoot formation</td>
-				</tr>
-				<tr>
-					<td><strong>Induction Time</strong></td>
-					<td>14 weeks (dark)</td>
-					<td>6 weeks (light)</td>
-				</tr>
-				<tr>
-					<td><strong>Multiplication</strong></td>
-					<td>2-iP (5 μM) + NAA (0.5 μM)</td>
-					<td>NAA (2 μM) + BAP (4 μM) + PBZ (6 μM)</td>
-				</tr>
-				<tr>
-					<td><strong>Acclimatization</strong></td>
-					<td>6 weeks</td>
-					<td>18 weeks</td>
-				</tr>
-				<tr>
-					<td><strong>Survival</strong></td>
-					<td>Not specified</td>
-					<td>92%</td>
-				</tr>
-				<tr>
-					<td><strong>Best For</strong></td>
-					<td>High multiplication potential</td>
-					<td>Faster, simpler protocol</td>
-				</tr>
-			</tbody>
-		</table>
+		<p class="microcopy">Choose Protocol A for high multiplication potential or Protocol B for faster turnaround.</p>
+		<div class="data-table-wrapper">
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>Aspect</th>
+						<th>Protocol A (Somatic Embryo)</th>
+						<th>Protocol B (Organogenesis)</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each protocolComparison as row}
+						<tr>
+							<td><strong>{row.aspect}</strong></td>
+							<td>{row.protocolA}</td>
+							<td>{row.protocolB}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
 	</ContentBlock>
 
 	<ContentBlock title="Key Success Factors">
@@ -331,5 +353,100 @@
 
 	.success-grid li {
 		margin: 0.5rem 0;
+	}
+
+	.microcopy {
+		font-size: 0.95rem;
+		font-weight: 500;
+		letter-spacing: -0.01em;
+		color: #4a5568;
+		margin-bottom: 0.5rem;
+		font-family: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	}
+
+	.data-table-wrapper {
+		overflow-x: auto;
+		margin-top: 1rem;
+	}
+
+	.data-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-family: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		font-size: 0.95rem;
+		border-spacing: 0;
+	}
+
+	.data-table thead th {
+		font-size: 0.75rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #718096;
+		font-weight: 600;
+		padding: 0.8rem;
+		border-bottom: 1px solid #e2e8f0;
+		background: #f8fafc;
+	}
+
+	.data-table tbody td {
+		padding: 0.85rem;
+		border-bottom: 1px solid #edf2f7;
+		color: #2d3748;
+	}
+
+	.data-table tbody tr:nth-child(odd) td {
+		background: #fcfdff;
+	}
+
+	.timeline-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+		gap: 1.25rem;
+		margin-top: 1rem;
+	}
+
+	.timeline-card {
+		border: 1px solid #e2e8f0;
+		border-radius: 14px;
+		padding: 1rem;
+		background: #fff;
+		box-shadow: 0 15px 25px rgba(15, 23, 42, 0.08);
+	}
+
+	.timeline-window {
+		font-size: 0.78rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: #a0aec0;
+		font-weight: 600;
+	}
+
+	.timeline-label {
+		font-size: 1.05rem;
+		font-weight: 600;
+		margin: 0.25rem 0;
+		color: #1a202c;
+	}
+
+	.timeline-notes {
+		font-size: 0.95rem;
+		color: #4a5568;
+		line-height: 1.5;
+	}
+
+	.step-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.step-list li {
+		margin-bottom: 1rem;
+	}
+
+	.step-number {
+		font-weight: 600;
+		margin-right: 0.5rem;
+		font-family: 'InterVariable', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 	}
 </style>

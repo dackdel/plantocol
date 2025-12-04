@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 	
 	export let title = '';
 	export let columns = 1;
@@ -13,22 +14,31 @@
 		? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-[35px] lg:gap-[40px] xl:gap-[60px]' 
 		: '';
 	
-	onMount(() => {
-		const observer = new IntersectionObserver((entries) => {
-			entries.forEach(entry => {
-				if (entry.isIntersecting) {
-					entry.target.classList.add('visible');
+	onMount(async () => {
+		if (browser && element) {
+			const { gsap } = await import('gsap');
+			const { ScrollTrigger } = await import('gsap/ScrollTrigger');
+			gsap.registerPlugin(ScrollTrigger);
+			
+			gsap.fromTo(element,
+				{ opacity: 0, y: 20 },
+				{
+					opacity: 1,
+					y: 0,
+					duration: 0.5,
+					ease: 'power2.out',
+					scrollTrigger: {
+						trigger: element,
+						start: 'top 85%',
+						toggleActions: 'play none none none'
+					}
 				}
-			});
-		}, { threshold: 0.15 });
-		
-		if (element) observer.observe(element);
-		
-		return () => observer.disconnect();
+			);
+		}
 	});
 </script>
 
-<section class="content-block scroll-animate" bind:this={element}>
+<section class="content-block" bind:this={element}>
 	{#if title}
 		<h3>{title}</h3>
 	{/if}
@@ -40,24 +50,26 @@
 
 <style>
 	.content-block {
-		margin-bottom: 120px;
+		margin-bottom: 64px;
+		opacity: 0;
 	}
 	
 	.content-block h3 {
-		font-size: clamp(24px, 3vw, 36px);
+		font-size: 20px;
 		font-weight: 600;
 		letter-spacing: -0.02em;
-		margin-bottom: 40px;
-		padding-bottom: 15px;
+		margin-bottom: 24px;
+		padding-bottom: 12px;
 		border-bottom: 1px solid #000;
+		color: #000;
 	}
 	
-	
 	.content :global(p) {
-		font-size: clamp(15px, 1.6vw, 18px);
-		line-height: 1.75;
+		font-size: 15px;
+		line-height: 1.7;
 		letter-spacing: -0.01em;
-		margin-bottom: 20px;
+		margin-bottom: 16px;
+		color: #333;
 	}
 	
 	.content :global(ul),
@@ -66,10 +78,11 @@
 	}
 	
 	.content :global(li) {
-		font-size: clamp(15px, 1.6vw, 18px);
-		line-height: 1.75;
+		font-size: 15px;
+		line-height: 1.7;
 		letter-spacing: -0.01em;
-		margin-bottom: 12px;
+		margin-bottom: 10px;
+		color: #333;
 	}
 	
 	.content :global(.step-list) {
@@ -78,7 +91,7 @@
 	}
 	
 	.content :global(.step-list li) {
-		padding: 20px 0;
+		padding: 16px 0;
 		border-bottom: 1px solid #e5e5e5;
 	}
 	
@@ -89,122 +102,182 @@
 	.content :global(.step-number) {
 		font-weight: 600;
 		display: inline-block;
-		margin-right: 10px;
+		margin-right: 8px;
+		color: #000;
 	}
 	
 	.content :global(table) {
 		width: 100%;
 		border-collapse: collapse;
-		margin: 40px 0;
-		font-size: clamp(14px, 1.5vw, 16px);
+		margin: 24px 0;
+		font-size: 14px;
 	}
 	
 	.content :global(th),
 	.content :global(td) {
 		text-align: left;
-		padding: 20px;
-		border-bottom: 1px solid #000;
+		padding: 14px 12px;
+		border-bottom: 1px solid #e5e5e5;
+		color: #333;
 	}
 	
 	.content :global(th) {
 		font-weight: 600;
 		border-top: 1px solid #000;
+		border-bottom: 1px solid #000;
+		color: #000;
+		background: #fafafa;
 	}
 	
 	.content :global(td) {
-		line-height: 1.7;
+		line-height: 1.6;
+	}
+	
+	.content :global(strong) {
+		color: #000;
+	}
+
+	/* Override colorful table styles from protocol pages */
+	.content :global(.data-table-wrapper) {
+		margin-top: 16px;
+	}
+
+	.content :global(.data-table) {
+		font-size: 14px;
+		background: #fff;
+	}
+
+	.content :global(.data-table thead th) {
+		background: #fafafa;
+		color: #000;
+		border-bottom: 1px solid #000;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.content :global(.data-table tbody td) {
+		color: #333;
+		border-bottom: 1px solid #e5e5e5;
+	}
+
+	.content :global(.data-table tbody tr:nth-child(odd) td) {
+		background: #fafafa;
+	}
+
+	.content :global(.timeline-grid) {
+		gap: 16px;
+	}
+
+	.content :global(.timeline-card) {
+		border: 1px solid #e5e5e5;
+		box-shadow: none;
+		background: #fff;
+	}
+
+	.content :global(.timeline-window) {
+		color: #666;
+	}
+
+	.content :global(.timeline-label) {
+		color: #000;
+	}
+
+	.content :global(.timeline-notes) {
+		color: #333;
+	}
+
+	.content :global(.microcopy) {
+		color: #666;
 	}
 	
 	/* Responsive Design */
 	@media (max-width: 480px) {
 		.content-block {
-			margin-bottom: 60px;
+			margin-bottom: 48px;
 		}
 		
 		.content-block h3 {
-			font-size: clamp(20px, 5vw, 28px);
-			margin-bottom: 25px;
+			font-size: 18px;
+			margin-bottom: 20px;
 			padding-bottom: 10px;
 		}
 		
-		
 		.content :global(p),
 		.content :global(li) {
-			font-size: 15px;
+			font-size: 14px;
 		}
 		
 		.content :global(.step-list li) {
-			padding: 15px 0;
+			padding: 12px 0;
 		}
 		
 		.content :global(table) {
-			font-size: 13px;
-			margin: 30px 0;
+			font-size: 12px;
+			margin: 20px 0;
 		}
 		
 		.content :global(th),
 		.content :global(td) {
-			padding: 12px 8px;
+			padding: 10px 8px;
 		}
 	}
 	
 	@media (min-width: 481px) and (max-width: 768px) {
 		.content-block {
-			margin-bottom: 70px;
+			margin-bottom: 56px;
 		}
 		
 		.content-block h3 {
-			font-size: clamp(22px, 4vw, 32px);
-			margin-bottom: 30px;
+			font-size: 19px;
+			margin-bottom: 22px;
 		}
 		
-		
 		.content :global(table) {
-			font-size: 14px;
+			font-size: 13px;
 		}
 		
 		.content :global(th),
 		.content :global(td) {
-			padding: 15px 12px;
+			padding: 12px 10px;
 		}
 	}
 	
 	@media (min-width: 769px) and (max-width: 1024px) {
 		.content-block {
-			margin-bottom: 100px;
+			margin-bottom: 60px;
 		}
 	}
 	
 	@media (min-width: 1921px) {
 		.content-block {
-			margin-bottom: 150px;
+			margin-bottom: 80px;
 		}
 		
 		.content-block h3 {
-			font-size: clamp(32px, 2.5vw, 44px);
-			margin-bottom: 50px;
-			padding-bottom: 20px;
+			font-size: 22px;
+			margin-bottom: 28px;
+			padding-bottom: 14px;
 		}
-		
 		
 		.content :global(p),
 		.content :global(li) {
-			font-size: 20px;
-			margin-bottom: 24px;
+			font-size: 16px;
+			margin-bottom: 18px;
 		}
 		
 		.content :global(.step-list li) {
-			padding: 25px 0;
+			padding: 18px 0;
 		}
 		
 		.content :global(table) {
-			font-size: 18px;
-			margin: 50px 0;
+			font-size: 15px;
+			margin: 28px 0;
 		}
 		
 		.content :global(th),
 		.content :global(td) {
-			padding: 25px;
+			padding: 16px 14px;
 		}
 	}
 </style>

@@ -13,11 +13,91 @@
 		'Mass Propagation'
 	];
 	const introColumns = [
-		'Vriesea brusquensis is propagated using Temporary Immersion Systems (TIS), an advanced technique for mass propagation of bromeliads. This protocol was developed at the Laboratory of Plant Developmental Physiology and Genetics (LFDGV/CCA/UFSC).',
+		'Vriesea brusquensis is propagated using Temporary Immersion Systems (TIS), an advanced technique for mass propagation of bromeliads. The reference workflow follows the Laboratory of Plant Developmental Physiology and Genetics (LFDGV/CCA/UFSC) benchmark described in Jain & Ochatt (2010).',
 		'TIS offers significant advantages over conventional tissue culture including increased multiplication rates, improved acclimatization responses, and decreased production costs through reduced manipulation, labor, and container requirements.',
 		'This species requires a lower Paclobutrazol concentration (2 μM) compared to Aechmea fasciata (6 μM), demonstrating species-specific optimization within the TIS framework.'
 	];
-	const source = 'Guerra & Dal Vesco (2010), Methods in Molecular Biology, vol. 589';
+
+	const donorCare = {
+		stageLabel: 'Stage 0',
+		durationSeconds: 2419200,
+		durationText: '4 weeks',
+		steps: [
+			'Fertilize donor clumps weekly with chelated 30-10-10 (NPK) plus Nitrofoska® to maintain vigorous offshoots.',
+			'Syringe-feed each rosette with 10 mL NAA (5 mM) + Vitamin B₁ to stimulate axillary bud formation.',
+			'Spray benomyl + mineral oil before moving plants to a phyto-tron (25 ± 2 °C, 16 h photoperiod at 300 μmol/m²/s) for sanitation.'
+		]
+	};
+
+	const msComponents = [
+		{ component: 'NH₄NO₃', stock: '82.5 g/L', volume: '20 mL', final: '1,650 mg/L' },
+		{ component: 'KNO₃', stock: '95.0 g/L', volume: '20 mL', final: '1,900 mg/L' },
+		{ component: 'CaCl₂·2H₂O', stock: '88.0 g/L', volume: '5 mL', final: '440 mg/L' },
+		{ component: 'KH₂PO₄', stock: '34 g/L', volume: '5 mL', final: '170 mg/L' },
+		{ component: 'MgSO₄·7H₂O', stock: '74 g/L', volume: '5 mL', final: '370 mg/L' },
+		{ component: 'Fe-EDTA solution', stock: '37.3 & 27.8 g/L', volume: '10 mL', final: 'Fe chelate pair' },
+		{ component: 'Micronutrient mix', stock: '1.24–0.0055 g/L', volume: '5 mL', final: 'Boron, iodine, molybdenum, cobalt' },
+		{ component: 'Morel vitamins', stock: '1–100 mg/L', volume: 'full strength', final: 'Thiamine, pyridoxine, nicotinic acid, Ca pantothenate, myo-inositol, glycine' },
+		{ component: 'Sucrose', stock: '-', volume: '-', finalWeight: 30 }
+	];
+
+	const tisMediaMatrix = [
+		{
+			stage: 'Induction',
+			duration: 'Weeks 0-9',
+			intent: 'Axillary bud awakening on filter bridges',
+			formulation: ['MS salts + Morel vitamins', 'Sucrose 3%', 'NAA 2 μM', 'BAP 4 μM']
+		},
+		{
+			stage: 'Multiplication',
+			duration: 'Weeks 9-18',
+			intent: 'TIS nodular clumps and microshoot proliferation',
+			formulation: ['MS salts + Morel vitamins', 'Sucrose 3%', 'PBZ 2 μM (V. brusquensis)', 'Immersion 3h : 3 min']
+		},
+		{
+			stage: 'Medium Refresh',
+			duration: 'Week 18',
+			intent: 'Replace oxidized medium to maintain nutrient flow',
+			formulation: ['Fresh multiplication medium', 'Maintain 3h : 3 min cycle']
+		},
+		{
+			stage: 'Elongation',
+			duration: 'Weeks 18-24',
+			intent: 'Synchronize shoots before ex vitro transfer',
+			formulation: ['MS salts + Morel vitamins', 'Sucrose 3%', 'GA₃ 10 μM', 'Continue 3h : 3 min']
+		}
+	];
+
+	const pbzComparisons = [
+		{
+			species: 'V. brusquensis (TIS)',
+			induction: 'MS + NAA 2 μM + BAP 4 μM',
+			multiplication: 'MS + PBZ 2 μM (liquid)',
+			elongation: 'MS + GA₃ 10 μM'
+		},
+		{
+			species: 'Aechmea fasciata (TIS)',
+			induction: 'Same as V. brusquensis',
+			multiplication: 'MS + PBZ 6 μM (higher compaction tolerance)',
+			elongation: 'MS + GA₃ 10 μM'
+		},
+		{
+			species: 'V. fosteriana (encapsulated)',
+			induction: 'MS + NAA 2 μM + BAP 4 μM + PBZ 4 μM',
+			multiplication: 'TDZ 0.1 μM boosts clusters',
+			elongation: 'Hormone-free MS before acclimatization'
+		}
+	];
+
+	const timeline = [
+		{ window: 'Stage 0 · Weeks -4–0', label: 'Donor Conditioning', notes: 'Fertilizer regime + NAA/Thiamine syringe feeds, benomyl sanitation' },
+		{ window: 'Stage 1 · Weeks 0–9', label: 'Buds on Filter Bridges', notes: '15 mL induction medium per tube, PBZ-free' },
+		{ window: 'Stage 2 · Weeks 9–18', label: 'TIS Multiplication', notes: '300–500 mL medium, immersion 3h : 3 min, refresh at week 6' },
+		{ window: 'Stage 3 · Weeks 18–24', label: 'TIS Elongation', notes: 'GA₃ replaces PBZ; shoots reach ≥3 cm' },
+		{ window: 'Stage 4 · Weeks 24–33', label: 'Acclimatization', notes: '2:1:1 Plantmax® HA : pine bark : carbonized rice coat + weekly ¼ MS foliar feed' }
+	];
+
+	const source = 'Guerra & Dal Vesco (2010) in Jain & Ochatt (2010), Methods in Molecular Biology, vol. 589';
 </script>
 
 <svelte:head>
@@ -39,6 +119,26 @@
 		</div>
 	</ContentBlock>
 
+	<ContentBlock title="Stage 0: Donor Plant Conditioning">
+		<div class="donor-grid">
+			<div>
+				<p class="duration-label">Duration</p>
+				<p class="duration-value">
+					<Timer duration={donorCare.durationSeconds} label={donorCare.stageLabel}>{donorCare.durationText}</Timer>
+				</p>
+			</div>
+			<div>
+				<p class="duration-label">Benchmark Tasks</p>
+				<ul>
+					{#each donorCare.steps as step}
+						<li>{step}</li>
+					{/each}
+				</ul>
+			</div>
+		</div>
+		<p class="microcopy">Healthy donor plants drive aseptic success—follow the fertilizer, phyto-tron, and sanitation cadence before excising buds.</p>
+	</ContentBlock>
+
 	<ContentBlock title="TIS Equipment Setup">
 		<ul>
 			<li><strong>Bioreactor containers:</strong> 300-500 mL capacity TIS vessels
@@ -52,6 +152,52 @@
 			<li><strong>Programmable timer:</strong> Precise 3h stationary : 3min immersion cycles</li>
 			<li><strong>Culture environment:</strong> Standard tissue culture room ({convertTemp(25, $unitSystem)} ± 2°C, 16h photoperiod)</li>
 		</ul>
+	</ContentBlock>
+
+	<ContentBlock title="Basal Medium Reference (MS + Morel)">
+		<p class="microcopy">The PDF lists the full Murashige & Skoog macro/micro salts plus Morel vitamins; keep this reference handy when preparing multi-liter batches.</p>
+		<div class="data-table-wrapper">
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>Component</th>
+						<th>Stock</th>
+						<th>Volume</th>
+						<th>Final in 1 L</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each msComponents as row}
+						<tr>
+							<td>{row.component}</td>
+							<td>{row.stock}</td>
+							<td>{row.volume}</td>
+							<td>
+								{#if row.final}
+									{row.final}
+								{:else if row.finalWeight}
+									{convertWeight(row.finalWeight, $unitSystem)}/L
+								{:else}
+									—
+								{/if}
+							</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
+	</ContentBlock>
+
+	<ContentBlock title="Operational Timeline (PDF Benchmark)">
+		<div class="timeline-grid">
+			{#each timeline as item}
+				<div class="timeline-card">
+					<p class="timeline-window">{item.window}</p>
+					<p class="timeline-label">{item.label}</p>
+					<p class="timeline-notes">{item.notes}</p>
+				</div>
+			{/each}
+		</div>
 	</ContentBlock>
 
 	<ContentBlock title="Stage 1: Initial Induction (8 weeks)">
@@ -111,6 +257,38 @@
 				Continue for <Timer duration={3628800} label="Second Period">6 more weeks</Timer> with fresh medium (total 12 weeks in multiplication).
 			</li>
 		</ol>
+	</ContentBlock>
+
+	<ContentBlock title="TIS Medium Matrix">
+		<p class="microcopy">Use the PDF matrix as the authoritative reference for hormone swaps inside the TIS.</p>
+		<div class="data-table-wrapper">
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>Stage</th>
+						<th>Window</th>
+						<th>Intent</th>
+						<th>Formulation</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each tisMediaMatrix as row}
+						<tr>
+							<td>{row.stage}</td>
+							<td>{row.duration}</td>
+							<td>{row.intent}</td>
+							<td>
+								<ul>
+									{#each row.formulation as formula}
+										<li>{formula}</li>
+									{/each}
+								</ul>
+							</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
 	</ContentBlock>
 
 	<ContentBlock title="Stage 3: TIS Elongation (6 weeks)">
@@ -185,6 +363,32 @@
 				<strong>Expected outcome:</strong> High survival rate due to superior TIS-produced plantlet quality
 			</li>
 		</ol>
+	</ContentBlock>
+
+	<ContentBlock title="PBZ & Hormone Comparison">
+		<p class="microcopy">Directly from the PDF Table 6.2—use this to adjust PBZ or TDZ loads when adapting the TIS for other bromeliads.</p>
+		<div class="data-table-wrapper">
+			<table class="data-table compact">
+				<thead>
+					<tr>
+						<th>Species</th>
+						<th>Induction</th>
+						<th>Multiplication</th>
+						<th>Elongation</th>
+					</tr>
+				</thead>
+				<tbody>
+					{#each pbzComparisons as row}
+						<tr>
+							<td>{row.species}</td>
+							<td>{row.induction}</td>
+							<td>{row.multiplication}</td>
+							<td>{row.elongation}</td>
+						</tr>
+					{/each}
+				</tbody>
+			</table>
+		</div>
 	</ContentBlock>
 
 	<ContentBlock title="Comparison: V. brusquensis vs A. fasciata TIS">
@@ -328,15 +532,16 @@
 
 <style>
 	.info-box {
-		background: var(--info-bg, #e8f4f8);
-		border-left: 4px solid var(--accent-color, #4a9f7c);
-		padding: 1.25rem;
+		background: #fafafa;
+		border-left: 2px solid #000;
+		padding: 1rem;
 		margin: 1rem 0;
 	}
 	
 	.info-box p {
 		margin: 0.5rem 0;
 		line-height: 1.6;
+		color: #333;
 	}
 
 	.info-box ul {
@@ -345,35 +550,37 @@
 	}
 
 	.highlight-box {
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		color: white;
-		padding: 1.25rem;
-		border-radius: 8px;
+		background: #fafafa;
+		color: #000;
+		padding: 1rem;
 		margin: 1rem 0;
+		border: 1px solid #e5e5e5;
 	}
 	
 	.highlight-box strong {
 		display: block;
 		margin-bottom: 0.5rem;
-		font-size: 1.1rem;
+		font-size: 1rem;
+		color: #000;
 	}
 	
 	.highlight-box p {
 		margin: 0;
 		line-height: 1.6;
-		opacity: 0.95;
+		color: #333;
 	}
 
 	.troubleshooting-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
 		margin-top: 1rem;
 	}
 
 	.troubleshooting-grid h4 {
-		color: var(--accent-color, #4a9f7c);
-		margin: 0 0 0.75rem 0;
+		color: #000;
+		margin: 0 0 0.5rem 0;
+		font-size: 15px;
 	}
 
 	.troubleshooting-grid ul {
@@ -382,6 +589,126 @@
 	}
 
 	.troubleshooting-grid li {
-		margin: 0.5rem 0;
+		margin: 0.4rem 0;
+	}
+
+	.microcopy {
+		font-size: 14px;
+		font-weight: 500;
+		letter-spacing: -0.01em;
+		color: #666;
+		margin-bottom: 0.5rem;
+	}
+
+	.donor-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1rem;
+		padding: 1rem;
+		background: #fafafa;
+		border: 1px solid #e5e5e5;
+	}
+
+	.duration-label {
+		font-size: 12px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #666;
+		font-weight: 600;
+	}
+
+	.duration-value {
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: #000;
+	}
+
+	.data-table-wrapper {
+		overflow-x: auto;
+		margin-top: 1rem;
+	}
+
+	.data-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 14px;
+		border-spacing: 0;
+	}
+
+	.data-table thead th {
+		font-size: 12px;
+		letter-spacing: 0.05em;
+		text-transform: uppercase;
+		color: #000;
+		font-weight: 600;
+		padding: 12px 10px;
+		border-top: 1px solid #000;
+		border-bottom: 1px solid #000;
+		background: #fafafa;
+	}
+
+	.data-table tbody td {
+		padding: 12px 10px;
+		border-bottom: 1px solid #e5e5e5;
+		color: #333;
+	}
+
+	.data-table tbody tr:nth-child(odd) td {
+		background: #fafafa;
+	}
+
+	.data-table.compact tbody td {
+		font-size: 13px;
+		padding: 10px 8px;
+	}
+
+	.timeline-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 12px;
+		margin-top: 1rem;
+	}
+
+	.timeline-card {
+		border: 1px solid #e5e5e5;
+		padding: 1rem;
+		background: #fff;
+	}
+
+	.timeline-window {
+		font-size: 12px;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: #666;
+		font-weight: 600;
+	}
+
+	.timeline-label {
+		font-size: 16px;
+		font-weight: 600;
+		margin: 0.25rem 0;
+		color: #000;
+	}
+
+	.timeline-notes {
+		font-size: 14px;
+		color: #333;
+		line-height: 1.5;
+	}
+
+	.step-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.step-list li {
+		margin-bottom: 0.75rem;
+	}
+
+	.step-number {
+		font-weight: 600;
+		margin-right: 0.5rem;
+		color: #000;
 	}
 </style>
