@@ -137,15 +137,14 @@
 			<!-- Mobile: tap to toggle menu -->
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
 			<span 
-				class="home-link" 
+				class="home-link nav-pill"
+				class:open={menuOpen}
 				on:click|preventDefault={toggleMenu}
 				role="button"
 				tabindex="0"
+				aria-expanded={menuOpen}
 			>
-				<span class="logo">Plantocol</span>
-				{#if menuOpen}
-					<span class="underline" use:animateUnderlineIn></span>
-				{/if}
+				Plantocol
 			</span>
 		{:else}
 			<!-- Desktop: click navigates home, hover opens menu -->
@@ -178,7 +177,7 @@
 					{/each}
 				</ul>
 			</div>
-			
+				
 			<!-- Recipes -->
 			<div class="menu-section">
 				<h3 class="menu-title">{menuItems.recipes.title}</h3>
@@ -218,6 +217,10 @@
 		</div>
 		{/if}
 	</div>
+	
+	{#if isMobile && menuOpen}
+		<div class="nav-overlay" on:click={() => (menuOpen = false)} aria-hidden="true"></div>
+	{/if}
 	
 	<!-- Mobile: Prev/Next nav shown when scrolled to bottom -->
 	{#if isMobile && isAtBottom && hasNavLinks}
@@ -398,19 +401,19 @@
 		.main-nav {
 			position: fixed;
 			top: auto;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			width: 100%;
-			padding: 10px 18px;
+			bottom: 12px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: auto;
+			padding: 0;
 			background: rgba(255, 255, 255, 0.95);
-			border-top: 1px solid #e0e0e0;
-			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+			border: 1px solid #222;
+			border-radius: 999px;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 			z-index: 100;
 		}
 		
 		.nav-trigger {
-			width: 100%;
 			padding: 0;
 			margin: 0;
 		}
@@ -422,17 +425,17 @@
 			font-size: 15px;
 			font-weight: 700;
 			cursor: pointer;
-			width: 100%;
-			padding: 10px 6px;
+			padding: 12px 32px;
+			color: #222;
 		}
 		
 		.dropdown-menu {
 			top: auto;
-			bottom: calc(100% + 12px);
-			left: 18px;
-			right: 18px;
+			bottom: calc(100% + 16px);
+			left: 50%;
+			transform: translateX(-50%);
 			padding: 24px 0 20px 0;
-			width: auto;
+			width: min(92vw, 360px);
 			min-width: unset;
 			max-height: 70vh;
 			overflow-y: auto;
@@ -444,7 +447,7 @@
 		
 		.menu-section {
 			margin-bottom: 24px;
-			padding: 0 18px;
+			padding: 0 24px;
 		}
 		
 		.menu-title {
@@ -458,7 +461,7 @@
 		}
 		
 		.unit-toggle {
-			margin: 0 18px;
+			margin: 0 24px;
 			padding: 16px 0;
 		}
 		
@@ -472,9 +475,9 @@
 		/* Mobile page navigation (prev/next) */
 		.mobile-page-nav {
 			position: fixed;
-			bottom: 48px;
-			left: 0;
-			right: 0;
+			bottom: 12px;
+			left: 12px;
+			right: 12px;
 			display: flex;
 			justify-content: space-between;
 			background: #fff;
