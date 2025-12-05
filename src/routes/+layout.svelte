@@ -6,7 +6,6 @@
 	import { dev } from '$app/environment';
 	import { inject } from '@vercel/analytics';
 	import { injectSpeedInsights } from '@vercel/speed-insights';
-	import UnitSelector from '$lib/components/UnitSelector.svelte';
 	import Navigation from '$lib/components/Navigation.svelte';
 	
 	let scrollY = 0;
@@ -95,10 +94,7 @@
 	<div class="progress-bar" style="width: {scrollProgress}%" />
 	
 	<!-- Navigation -->
-	<Navigation />
-	
-	<!-- Unit selector -->
-	<UnitSelector />
+	<Navigation {scrollY} />
 	
 	<slot />
 	

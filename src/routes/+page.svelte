@@ -1,6 +1,19 @@
 <script>
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
+	
+	// Scroll animation state
+	let scrollY = 0;
+	let heroTitleEl;
+	let animationProgress = 0;
+	
+	// Animation parameters
+	const SCROLL_START = 0;
+	const SCROLL_END = 300; // Animation completes at 300px scroll
+	
+	// Calculate animation progress (0 to 1)
+	$: animationProgress = Math.min(1, Math.max(0, scrollY / SCROLL_END));
 	
 	const contentSections = [
 		{
@@ -13,7 +26,7 @@
 			]
 		},
 		{
-			category: 'SPECIES PROTOCOLS',
+			category: 'RECIPES',
 			description: 'Step-by-step propagation guides',
 			items: [
 				{ name: 'African Violet', path: '/protocols/african-violet', badge: '⭐ Beginner', detail: 'Saintpaulia ionantha' },
@@ -58,6 +71,8 @@
 	}
 </script>
 
+<svelte:window bind:scrollY />
+
 <svelte:head>
 	<title>Plantocol - Plant Tissue Culture Protocol Library</title>
 </svelte:head>
@@ -66,8 +81,16 @@
 	<!-- Hero Section -->
 	<section class="hero">
 		<div class="hero-content">
-			<h1>Plantocol</h1>
-			<p class="subtitle">Tissue Culture Protocol Library</p>
+			<!-- Animated title that transforms into nav -->
+			<a 
+				href="/"
+				bind:this={heroTitleEl}
+				class="hero-title"
+				style="--progress: {animationProgress};"
+			>
+				Plantocol
+			</a>
+			<p class="subtitle" style="opacity: {Math.max(0, 1 - animationProgress * 2)}">Tissue Culture Protocol Library</p>
 		</div>
 	</section>
 	
@@ -129,13 +152,22 @@
 		max-width: 1000px;
 	}
 	
-	.hero h1 {
-		/* Interface Guidelines: Typography - Fluid sizing with clamp() */
-		font-size: clamp(60px, 11vw, 160px);
+	.hero-title {
+		/* Always fixed position to avoid snap on scroll start */
+		position: fixed;
+		/* Interpolate: start at ~50vh centered, end at 20px from top */
+		top: calc((50vh - 0.5em) * (1 - var(--progress)) + 20px * var(--progress));
+		left: 8%;
+		/* Interpolate font-size: full size -> nav size (10%) */
+		font-size: calc(clamp(60px, 11vw, 160px) * (1 - var(--progress) * 0.9));
 		font-weight: 700;
 		line-height: 1.05;
 		letter-spacing: -0.05em;
-		margin: 0 0 24px 0;
+		margin: 0;
+		color: #222;
+		text-decoration: none;
+		display: block;
+		z-index: 101;
 	}
 	
 	.subtitle {
@@ -144,7 +176,8 @@
 		letter-spacing: -0.02em;
 		color: #666;
 		line-height: 1.4;
-		margin: 0 0 0 8px;
+		/* Push below the fixed title */
+		margin: calc(clamp(60px, 11vw, 160px) + 24px) 0 0 8px;
 	}
 	
 	/* Navigation Section - Laboratory Notebook Style */
@@ -280,15 +313,15 @@
 			padding: 0 5%;
 		}
 		
-		.hero h1 {
-			font-size: clamp(48px, 14vw, 72px);
-			line-height: 1.1;
-			margin-bottom: 16px;
+		.hero-title {
+			left: 5%;
+			top: calc((50vh - 0.5em) * (1 - var(--progress)) + 12px * var(--progress));
+			font-size: calc(clamp(48px, 14vw, 72px) * (1 - var(--progress) * 0.8));
 		}
 		
 		.subtitle {
 			font-size: clamp(18px, 4vw, 24px);
-			margin: 0 0 0 4px;
+			margin: calc(clamp(48px, 14vw, 72px) + 16px) 0 0 4px;
 		}
 		
 		.nav-section {
@@ -345,13 +378,15 @@
 			min-height: 85vh;
 		}
 		
-		.hero h1 {
-			font-size: clamp(56px, 12vw, 100px);
+		.hero-title {
+			left: 6%;
+			top: calc((50vh - 0.5em) * (1 - var(--progress)) + 15px * var(--progress));
+			font-size: calc(clamp(56px, 12vw, 100px) * (1 - var(--progress) * 0.85));
 		}
 		
 		.subtitle {
 			font-size: clamp(20px, 3vw, 28px);
-			margin: 0 0 0 6px;
+			margin: calc(clamp(56px, 12vw, 100px) + 20px) 0 0 6px;
 		}
 		
 		.nav-section {
@@ -371,13 +406,15 @@
 			padding-right: 7%;
 		}
 		
-		.hero h1 {
-			font-size: clamp(64px, 10vw, 120px);
+		.hero-title {
+			left: 7%;
+			top: calc((50vh - 0.5em) * (1 - var(--progress)) + 18px * var(--progress));
+			font-size: calc(clamp(64px, 10vw, 120px) * (1 - var(--progress) * 0.87));
 		}
 		
 		.subtitle {
 			font-size: clamp(22px, 2.8vw, 30px);
-			margin: 0 0 0 7px;
+			margin: calc(clamp(64px, 10vw, 120px) + 22px) 0 0 7px;
 		}
 		
 		.nav-section {
@@ -392,13 +429,15 @@
 			padding-right: 10%;
 		}
 		
-		.hero h1 {
-			font-size: clamp(80px, 8vw, 180px);
+		.hero-title {
+			left: 10%;
+			top: calc((50vh - 0.5em) * (1 - var(--progress)) + 24px * var(--progress));
+			font-size: calc(clamp(80px, 8vw, 180px) * (1 - var(--progress) * 0.91));
 		}
 		
 		.subtitle {
 			font-size: clamp(28px, 2vw, 38px);
-			margin: 0 0 0 10px;
+			margin: calc(clamp(80px, 8vw, 180px) + 28px) 0 0 10px;
 		}
 		
 		.nav-section h2 {

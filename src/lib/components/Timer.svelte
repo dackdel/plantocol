@@ -12,8 +12,100 @@
 	let startTime;
 	let pausedTime = 0;
 	
+	// Check if duration is more than 1 hour (3600 seconds)
+	$: isLongDuration = duration > 3600;
+	
 	// Calculate progress percentage
 	$: progressPercent = (timeRemaining / duration) * 100;
+	
+	// Generate ICS calendar file
+	function generateICS() {
+		const now = new Date();
+		const endDate = new Date(now.getTime() + duration * 1000);
+		
+		// Format dates for ICS (YYYYMMDDTHHMMSSZ)
+		const formatDate = (date) => {
+			return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+		};
+		
+		// Format creation timestamp for display
+		const formatCreationTime = (date) => {
+			return date.toLocaleString('en-US', {
+				weekday: 'short',
+				year: 'numeric',
+				month: 'short',
+				day: 'numeric',
+				hour: '2-digit',
+				minute: '2-digit'
+			});
+		};
+		
+		// Get current page info
+		const pageTitle = typeof document !== 'undefined' ? document.title : 'Plantocol';
+		const recipeTitle = pageTitle.replace(' - Plantocol', '').replace('Plantocol - ', '');
+		
+		// Get current URL with scroll position
+		const scrollY = typeof window !== 'undefined' ? Math.round(window.scrollY) : 0;
+		const currentUrl = typeof window !== 'undefined' 
+			? `${window.location.href.split('#')[0]}#scroll=${scrollY}`
+			: '';
+		
+		const creationTimestamp = formatCreationTime(now);
+		
+		const description = [
+			`Recipe: ${recipeTitle}`,
+			`Step: ${label}`,
+			`Duration: ${formatDurationReadable(duration)}`,
+			``,
+			`Event created: ${creationTimestamp}`,
+			``,
+			`Return to this step:`,
+			`${currentUrl}`
+		].join('\\n');
+		
+		const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Plantocol//Calendar Event//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:${formatDate(now)}
+DTEND:${formatDate(endDate)}
+SUMMARY:${label} - ${recipeTitle}
+DESCRIPTION:${description}
+URL:${currentUrl}
+STATUS:CONFIRMED
+UID:${Date.now()}@plantocol.com
+END:VEVENT
+END:VCALENDAR`;
+		
+		// Create and download the file
+		const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8' });
+		const url = URL.createObjectURL(blob);
+		const link = document.createElement('a');
+		link.href = url;
+		link.download = `${label.replace(/\s+/g, '-').toLowerCase()}-plantocol.ics`;
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+		URL.revokeObjectURL(url);
+	}
+	
+	// Format duration for human readable display
+	function formatDurationReadable(seconds) {
+		const weeks = Math.floor(seconds / 604800);
+		const days = Math.floor((seconds % 604800) / 86400);
+		const hours = Math.floor((seconds % 86400) / 3600);
+		const mins = Math.floor((seconds % 3600) / 60);
+		
+		const parts = [];
+		if (weeks > 0) parts.push(`${weeks} week${weeks > 1 ? 's' : ''}`);
+		if (days > 0) parts.push(`${days} day${days > 1 ? 's' : ''}`);
+		if (hours > 0) parts.push(`${hours} hour${hours > 1 ? 's' : ''}`);
+		if (mins > 0) parts.push(`${mins} minute${mins > 1 ? 's' : ''}`);
+		
+		return parts.join(', ') || 'Less than a minute';
+	}
 	
 	// Apply background to entire page
 	$: if (isActive && typeof document !== 'undefined') {
@@ -147,10 +239,17 @@
 </script>
 
 {#if !isActive}
-	<button class="timer-badge" on:click={startTimer} aria-label="Start {label} timer">
-		<span class="timer-icon">⏱</span>
-		<slot />
-	</button>
+	{#if isLongDuration}
+		<button class="timer-badge calendar-badge" on:click={generateICS} aria-label="Add {label} to calendar">
+			<span class="timer-icon">📅</span>
+			<slot />
+		</button>
+	{:else}
+		<button class="timer-badge" on:click={startTimer} aria-label="Start {label} timer">
+			<span class="timer-icon">⏱</span>
+			<slot />
+		</button>
+	{/if}
 {:else}
 	<!-- Timer display -->
 	<div class="timer-overlay" role="timer" aria-live="polite">
@@ -188,6 +287,14 @@
 	.timer-badge:hover {
 		background: #f5f5f5;
 		border-color: #000;
+	}
+	
+	.calendar-badge {
+		border-style: dashed;
+	}
+	
+	.calendar-badge:hover {
+		border-style: solid;
 	}
 	
 	.timer-icon {
