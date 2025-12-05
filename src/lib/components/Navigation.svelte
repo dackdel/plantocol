@@ -396,28 +396,44 @@
 	/* Mobile styles */
 	@media (max-width: 768px) {
 		.main-nav {
+			position: fixed;
 			top: auto;
-			bottom: 20px;
-			left: 5%;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			width: 100%;
+			padding: 10px 18px;
+			background: rgba(255, 255, 255, 0.95);
+			border-top: 1px solid #e0e0e0;
+			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.08);
+			z-index: 100;
 		}
 		
 		.nav-trigger {
-			padding-bottom: 0;
-			margin-bottom: 0;
+			width: 100%;
+			padding: 0;
+			margin: 0;
 		}
 		
 		.home-link {
-			font-size: 14px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			font-size: 15px;
 			font-weight: 700;
 			cursor: pointer;
+			width: 100%;
+			padding: 10px 6px;
 		}
 		
 		.dropdown-menu {
 			top: auto;
 			bottom: calc(100% + 12px);
-			left: 0;
+			left: 18px;
+			right: 18px;
 			padding: 24px 0 20px 0;
-			min-width: 260px;
+			width: auto;
+			min-width: unset;
 			max-height: 70vh;
 			overflow-y: auto;
 			background: #fff;
@@ -428,20 +444,21 @@
 		
 		.menu-section {
 			margin-bottom: 24px;
-			padding: 0 20px;
+			padding: 0 18px;
 		}
 		
 		.menu-title {
-			font-size: 18px;
+			font-size: 16px;
+			font-weight: 600;
 		}
 		
 		.menu-link {
-			font-size: 15px;
+			font-size: 14px;
 			padding: 8px 0;
 		}
 		
 		.unit-toggle {
-			margin: 0 20px;
+			margin: 0 18px;
 			padding: 16px 0;
 		}
 		
@@ -455,7 +472,7 @@
 		/* Mobile page navigation (prev/next) */
 		.mobile-page-nav {
 			position: fixed;
-			bottom: 0;
+			bottom: 48px;
 			left: 0;
 			right: 0;
 			display: flex;

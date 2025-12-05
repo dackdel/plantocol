@@ -185,7 +185,8 @@
 		}
 		
 		.back-to-top {
-			bottom: 16px;
+			top: 16px;
+			bottom: auto;
 			right: 16px;
 			width: 44px;
 			height: 44px;
@@ -195,7 +196,8 @@
 	
 	@media (min-width: 481px) and (max-width: 768px) {
 		.back-to-top {
-			bottom: 20px;
+			top: 20px;
+			bottom: auto;
 			right: 20px;
 			width: 46px;
 			height: 46px;
