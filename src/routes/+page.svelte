@@ -141,6 +141,7 @@
 	
 	/* Hero Section */
 	.hero {
+		position: relative;
 		min-height: 100vh;
 		display: flex;
 		align-items: center;
@@ -315,13 +316,25 @@
 		
 		.hero-title {
 			left: 5%;
-			top: calc((50vh - 0.5em) * (1 - var(--progress)) + 12px * var(--progress));
-			font-size: calc(clamp(48px, 14vw, 72px) * (1 - var(--progress) * 0.8));
+			/* Mobile: animate to bottom-left instead of top-left */
+			top: auto;
+			bottom: calc((50vh - 0.5em) * (1 - var(--progress)) + 20px * var(--progress));
+			font-size: calc(clamp(48px, 14vw, 72px) * (1 - var(--progress) * 0.75));
+			/* Add nav box styling as it animates */
+			padding: calc(4px * var(--progress)) calc(12px * var(--progress));
+			background: rgba(255, 255, 255, calc(0.95 * var(--progress)));
+			border-radius: calc(6px * var(--progress));
+			box-shadow: 0 2px calc(12px * var(--progress)) rgba(0, 0, 0, calc(0.08 * var(--progress)));
 		}
 		
 		.subtitle {
 			font-size: clamp(18px, 4vw, 24px);
-			margin: calc(clamp(48px, 14vw, 72px) + 16px) 0 0 4px;
+			/* On mobile, position subtitle at top since title animates to bottom */
+			position: absolute;
+			top: 50%;
+			left: 5%;
+			transform: translateY(-50%);
+			margin: calc(clamp(48px, 14vw, 72px) * 0.6) 0 0 0;
 		}
 		
 		.nav-section {
@@ -380,13 +393,25 @@
 		
 		.hero-title {
 			left: 6%;
-			top: calc((50vh - 0.5em) * (1 - var(--progress)) + 15px * var(--progress));
-			font-size: calc(clamp(56px, 12vw, 100px) * (1 - var(--progress) * 0.85));
+			/* Mobile/Tablet: animate to bottom-left instead of top-left */
+			top: auto;
+			bottom: calc((50vh - 0.5em) * (1 - var(--progress)) + 20px * var(--progress));
+			font-size: calc(clamp(56px, 12vw, 100px) * (1 - var(--progress) * 0.8));
+			/* Add nav box styling as it animates */
+			padding: calc(4px * var(--progress)) calc(12px * var(--progress));
+			background: rgba(255, 255, 255, calc(0.95 * var(--progress)));
+			border-radius: calc(6px * var(--progress));
+			box-shadow: 0 2px calc(12px * var(--progress)) rgba(0, 0, 0, calc(0.08 * var(--progress)));
 		}
 		
 		.subtitle {
 			font-size: clamp(20px, 3vw, 28px);
-			margin: calc(clamp(56px, 12vw, 100px) + 20px) 0 0 6px;
+			/* On tablet, position subtitle at top since title animates to bottom */
+			position: absolute;
+			top: 50%;
+			left: 6%;
+			transform: translateY(-50%);
+			margin: calc(clamp(56px, 12vw, 100px) * 0.55) 0 0 0;
 		}
 		
 		.nav-section {

@@ -109,64 +109,9 @@
 		}
 	}
 	
-	/* Responsive Design */
-	@media (max-width: 480px) {
+	/* Hide on mobile - nav is consolidated into bottom nav bar */
+	@media (max-width: 768px) {
 		.protocol-nav {
-			padding: 40px 5%;
-			margin-top: 40px;
-		}
-		
-		.nav-container {
-			grid-template-columns: 1fr;
-			gap: 24px;
-		}
-		
-		.nav-link.prev,
-		.nav-link.home,
-		.nav-link.next {
-			justify-self: start;
-			text-align: left;
-		}
-		
-		.nav-label {
-			font-size: 11px;
-		}
-		
-		.nav-title {
-			font-size: 14px;
-		}
-		
-		.nav-spacer {
-			display: none;
-		}
-	}
-	
-	@media (min-width: 481px) and (max-width: 768px) {
-		.protocol-nav {
-			padding: 50px 6%;
-		}
-		
-		.nav-container {
-			grid-template-columns: 1fr;
-			gap: 28px;
-		}
-		
-		.nav-link.prev,
-		.nav-link.home,
-		.nav-link.next {
-			justify-self: start;
-			text-align: left;
-		}
-		
-		.nav-label {
-			font-size: 12px;
-		}
-		
-		.nav-title {
-			font-size: 15px;
-		}
-		
-		.nav-spacer {
 			display: none;
 		}
 	}

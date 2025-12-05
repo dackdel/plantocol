@@ -59,6 +59,7 @@
 	}
 	
 	.checkbox {
+		/* Visual size */
 		width: 20px;
 		height: 20px;
 		border: 2px solid #222;
@@ -72,6 +73,19 @@
 		flex-shrink: 0;
 		margin-top: 2px;
 		padding: 0;
+		/* Expand touch target without changing visual size */
+		position: relative;
+	}
+	
+	.checkbox::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 44px;
+		height: 44px;
+		/* Invisible expanded touch area */
 	}
 	
 	.checkbox:hover {
@@ -114,6 +128,14 @@
 		
 		.checkmark {
 			font-size: 12px;
+		}
+	}
+	
+	/* Override global touch target size - we use ::before for expanded touch area */
+	@media (hover: none) and (pointer: coarse) {
+		.checkbox {
+			min-height: unset;
+			min-width: unset;
 		}
 	}
 </style>

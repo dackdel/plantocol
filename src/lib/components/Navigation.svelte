@@ -2,6 +2,7 @@
 	import { page } from '$app/stores';
 	import { unitSystem } from '$lib/stores/units';
 	import { onMount, onDestroy } from 'svelte';
+	import { browser } from '$app/environment';
 	import gsap from 'gsap';
 	
 	export let scrollY = 0;
@@ -14,6 +15,33 @@
 	// Menu state
 	let menuOpen = false;
 	let isMobile = false;
+	let isAtBottom = false;
+	
+	// Protocol navigation order
+	const protocols = [
+		{ name: 'Introduction', path: '/introduction' },
+		{ name: 'Equipment & Lab Setup', path: '/guides/equipment-setup' },
+		{ name: 'Media Preparation', path: '/guides/media-preparation' },
+		{ name: 'African Violet', path: '/protocols/african-violet' },
+		{ name: 'Monstera', path: '/protocols/monstera' },
+		{ name: 'Begonia', path: '/protocols/begonia' },
+		{ name: 'Bromeliads', path: '/protocols/bromeliad' },
+		{ name: 'Hosta', path: '/protocols/hosta' },
+		{ name: 'Sarracenia', path: '/protocols/sarracenia' },
+		{ name: 'Troubleshooting', path: '/guides/troubleshooting' }
+	];
+	
+	$: currentIndex = protocols.findIndex(p => p.path === $page.url.pathname);
+	$: prevProtocol = currentIndex > 0 ? protocols[currentIndex - 1] : null;
+	$: nextProtocol = currentIndex < protocols.length - 1 ? protocols[currentIndex + 1] : null;
+	$: hasNavLinks = prevProtocol || nextProtocol;
+	
+	// Check if scrolled to bottom
+	$: if (browser && isMobile) {
+		const scrollHeight = document.documentElement.scrollHeight;
+		const clientHeight = window.innerHeight;
+		isAtBottom = scrollY + clientHeight >= scrollHeight - 100; // 100px threshold
+	}
 	
 	// Check if mobile on mount and resize
 	onMount(() => {
@@ -190,6 +218,24 @@
 		</div>
 		{/if}
 	</div>
+	
+	<!-- Mobile: Prev/Next nav shown when scrolled to bottom -->
+	{#if isMobile && isAtBottom && hasNavLinks}
+	<div class="mobile-page-nav">
+		{#if prevProtocol}
+			<a href={prevProtocol.path} class="page-nav-link prev">
+				<span class="arrow">←</span>
+				<span class="page-name">{prevProtocol.name}</span>
+			</a>
+		{/if}
+		{#if nextProtocol}
+			<a href={nextProtocol.path} class="page-nav-link next">
+				<span class="page-name">{nextProtocol.name}</span>
+				<span class="arrow">→</span>
+			</a>
+		{/if}
+	</div>
+	{/if}
 </nav>
 {/if}
 
@@ -404,6 +450,62 @@
 			padding-top: 16px;
 			border-top: 1px solid #e0e0e0;
 			margin-bottom: 0;
+		}
+		
+		/* Mobile page navigation (prev/next) */
+		.mobile-page-nav {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			display: flex;
+			justify-content: space-between;
+			background: #fff;
+			border-top: 1px solid #e0e0e0;
+			padding: 8px 16px;
+			z-index: 99;
+			animation: slideUp 0.2s ease both;
+		}
+		
+		.page-nav-link {
+			display: flex;
+			align-items: center;
+			gap: 6px;
+			text-decoration: none;
+			color: #222;
+			font-size: 13px;
+			font-weight: 500;
+			padding: 6px 0;
+		}
+		
+		.page-nav-link.prev {
+			margin-right: auto;
+		}
+		
+		.page-nav-link.next {
+			margin-left: auto;
+		}
+		
+		.page-nav-link .arrow {
+			font-size: 14px;
+		}
+		
+		.page-nav-link .page-name {
+			max-width: 120px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+	}
+	
+	@keyframes slideUp {
+		from {
+			transform: translateY(100%);
+			opacity: 0;
+		}
+		to {
+			transform: translateY(0);
+			opacity: 1;
 		}
 	}
 	
