@@ -411,6 +411,7 @@
 			border-radius: 999px;
 			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 			z-index: 100;
+			max-width: calc(100% - 24px);
 		}
 		
 		.nav-trigger {
@@ -421,28 +422,42 @@
 		.home-link {
 			display: flex;
 			align-items: center;
-			justify-content: space-between;
+			justify-content: center;
 			font-size: 15px;
 			font-weight: 700;
 			cursor: pointer;
 			padding: 12px 32px;
 			color: #222;
+			gap: 10px;
+		}
+		
+		.nav-pill {
+			border-radius: 999px;
+			min-width: 140px;
+			text-align: center;
+		}
+		
+		.nav-pill.open {
+			background: #222;
+			color: #fff;
 		}
 		
 		.dropdown-menu {
+			position: fixed;
 			top: auto;
-			bottom: calc(100% + 16px);
 			left: 50%;
 			transform: translateX(-50%);
+			bottom: calc(12px + 64px + env(safe-area-inset-bottom));
 			padding: 24px 0 20px 0;
-			width: min(92vw, 360px);
+			width: min(94vw, 360px);
 			min-width: unset;
-			max-height: 70vh;
+			max-height: calc(100vh - 140px);
 			overflow-y: auto;
 			background: #fff;
 			border-radius: 8px;
 			box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
 			animation: menuFadeInMobile 0.2s ease both;
+			z-index: 101;
 		}
 		
 		.menu-section {
@@ -475,7 +490,7 @@
 		/* Mobile page navigation (prev/next) */
 		.mobile-page-nav {
 			position: fixed;
-			bottom: 12px;
+			bottom: calc(12px + 64px + env(safe-area-inset-bottom));
 			left: 12px;
 			right: 12px;
 			display: flex;

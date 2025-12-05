@@ -316,11 +316,9 @@
 		
 		.hero-title {
 			left: 5%;
-			/* Mobile: animate to bottom-left instead of top-left */
 			top: auto;
-			bottom: calc((50vh - 0.5em) * (1 - var(--progress)) + 20px * var(--progress));
+			bottom: calc((56vh) * (1 - var(--progress)) + 24px * var(--progress));
 			font-size: calc(clamp(48px, 14vw, 72px) * (1 - var(--progress) * 0.75));
-			/* Add nav box styling as it animates */
 			padding: calc(4px * var(--progress)) calc(12px * var(--progress));
 			background: rgba(255, 255, 255, calc(0.95 * var(--progress)));
 			border-radius: calc(6px * var(--progress));
@@ -329,12 +327,12 @@
 		
 		.subtitle {
 			font-size: clamp(18px, 4vw, 24px);
-			/* On mobile, position subtitle at top since title animates to bottom */
-			position: absolute;
-			top: 50%;
-			left: 5%;
-			transform: translateY(-50%);
-			margin: calc(clamp(48px, 14vw, 72px) * 0.6) 0 0 0;
+			position: relative;
+			left: 0;
+			top: 0;
+			transform: none;
+			margin: 0;
+			padding-top: clamp(18px, 5vw, 32px);
 		}
 		
 		.nav-section {
