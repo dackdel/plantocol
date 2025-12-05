@@ -16,6 +16,30 @@
 	let menuOpen = false;
 	let isMobile = false;
 	let isAtBottom = false;
+	let lineTop;
+	let lineMiddle;
+	let lineBottom;
+
+	function animateHamburger(open) {
+		if (!lineTop || !lineMiddle || !lineBottom) return;
+		const duration = 0.25;
+		
+		if (open) {
+			gsap.to(lineTop, { y: 6, rotation: 45, duration, ease: 'power2.out' });
+			gsap.to(lineMiddle, { opacity: 0, scaleX: 0, duration: duration * 0.8, ease: 'power2.out' });
+			gsap.to(lineBottom, { y: -6, rotation: -45, duration, ease: 'power2.out' });
+		} else {
+			gsap.to(lineTop, { y: 0, rotation: 0, duration, ease: 'power2.out' });
+			gsap.to(lineMiddle, { opacity: 1, scaleX: 1, duration: duration * 0.8, ease: 'power2.out' });
+			gsap.to(lineBottom, { y: 0, rotation: 0, duration, ease: 'power2.out' });
+		}
+	}
+	
+	$: if (isMobile) {
+		animateHamburger(menuOpen);
+	} else {
+		animateHamburger(false);
+	}
 	
 	// Protocol navigation order
 	const protocols = [
@@ -135,17 +159,21 @@
 	>
 		{#if isMobile}
 			<!-- Mobile: tap to toggle menu -->
-			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<span 
+			<button 
+				type="button"
 				class="home-link nav-pill"
 				class:open={menuOpen}
-				on:click|preventDefault={toggleMenu}
-				role="button"
-				tabindex="0"
+				on:click={toggleMenu}
 				aria-expanded={menuOpen}
+				aria-label="Toggle navigation"
 			>
-				Plantocol
-			</span>
+				<span class="sr-only">Toggle navigation menu</span>
+				<span class="hamburger-icon">
+					<span class="hamburger-line" bind:this={lineTop}></span>
+					<span class="hamburger-line" bind:this={lineMiddle}></span>
+					<span class="hamburger-line" bind:this={lineBottom}></span>
+				</span>
+			</button>
 		{:else}
 			<!-- Desktop: click navigates home, hover opens menu -->
 			<a href="/" class="home-link" aria-label="Go to homepage">
@@ -396,14 +424,25 @@
 		color: #222;
 	}
 	
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
+	
 	/* Mobile styles */
 	@media (max-width: 768px) {
 		.main-nav {
 			position: fixed;
 			top: auto;
 			bottom: 12px;
-			left: 50%;
-			transform: translateX(-50%);
+			left: 12px;
+			transform: none;
 			width: auto;
 			padding: 0;
 			background: rgba(255, 255, 255, 0.95);
@@ -420,33 +459,65 @@
 		}
 		
 		.home-link {
-			display: flex;
+			display: inline-flex;
 			align-items: center;
 			justify-content: center;
-			font-size: 15px;
-			font-weight: 700;
+			width: 64px;
+			height: 64px;
+			padding: 0;
+			font-size: 0;
+			border-radius: 50%;
+			background: #fff;
+			border: none;
 			cursor: pointer;
-			padding: 12px 32px;
-			color: #222;
-			gap: 10px;
+			box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
 		}
 		
 		.nav-pill {
-			border-radius: 999px;
-			min-width: 140px;
+			border-radius: 50%;
+			min-width: unset;
 			text-align: center;
+			transition: background 0.2s ease, box-shadow 0.2s ease;
 		}
 		
 		.nav-pill.open {
 			background: #222;
-			color: #fff;
+			box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+		}
+		
+		.hamburger-icon {
+			position: relative;
+			width: 24px;
+			height: 18px;
+		}
+		
+		.hamburger-line {
+			position: absolute;
+			left: 0;
+			right: 0;
+			height: 2.5px;
+			background: currentColor;
+			border-radius: 999px;
+		}
+		
+		.hamburger-line:first-child {
+			top: 0;
+		}
+		
+		.hamburger-line:nth-child(2) {
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		
+		.hamburger-line:last-child {
+			bottom: 0;
 		}
 		
 		.dropdown-menu {
 			position: fixed;
 			top: auto;
-			left: 50%;
-			transform: translateX(-50%);
+			left: 16px;
+			transform: none;
 			bottom: calc(12px + 64px + env(safe-area-inset-bottom));
 			padding: 24px 0 20px 0;
 			width: min(94vw, 360px);

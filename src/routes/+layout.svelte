@@ -185,23 +185,23 @@
 		}
 		
 		.back-to-top {
-			top: 16px;
+			top: 12px;
 			bottom: auto;
 			right: 16px;
-			width: 44px;
-			height: 44px;
-			font-size: 18px;
+			width: 24px;
+			height: 24px;
+			font-size: 12px;
 		}
 	}
 	
 	@media (min-width: 481px) and (max-width: 768px) {
 		.back-to-top {
-			top: 20px;
+			top: 18px;
 			bottom: auto;
 			right: 20px;
-			width: 46px;
-			height: 46px;
-			font-size: 19px;
+			width: 30px;
+			height: 30px;
+			font-size: 14px;
 		}
 	}
 	
