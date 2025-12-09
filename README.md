@@ -5,4 +5,4 @@ A clean, laboratory notebook-inspired web application for plant tissue culture p
 
 ## License
 
-MIT
+BSD 3-Clause
