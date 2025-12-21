@@ -1,4 +1,5 @@
 <script>
+	import { browser } from '$app/environment';
 	import ProtocolLayout from '$lib/components/ProtocolLayout.svelte';
 	import ContentBlock from '$lib/components/ContentBlock.svelte';
 	import Term from '$lib/components/Term.svelte';
@@ -17,6 +18,99 @@
 		'Success in tissue culture depends on precision, consistency, and attention to detail. The difference between multiplication and rooting media lies primarily in hormonal composition, but successful implementation requires understanding the subtle interplay of all components.'
 	];
 	const source = '';
+	const baseCycleMinutes = 15;
+	const altitudeFactor = 300; // metros de ascenso ≈ +1 min recommendation
+
+	let cycleMode = 'location'; // 'location' | 'altitude'
+	let locationInput = '';
+	let altitudeInput = '';
+	let derivedAltitude = null;
+	let lookupStatus = '';
+	let isFetchingAltitude = false;
+
+	$: parsedAltitude =
+		cycleMode === 'altitude'
+			? altitudeInput && !Number.isNaN(Number(altitudeInput))
+				? Number(altitudeInput)
+				: null
+			: derivedAltitude;
+
+	$: recommendedMinutes =
+		parsedAltitude !== null && !Number.isNaN(parsedAltitude)
+			? Math.max(baseCycleMinutes, Math.round(baseCycleMinutes + parsedAltitude / altitudeFactor))
+			: baseCycleMinutes;
+
+	$: recommendationText =
+		parsedAltitude !== null && !Number.isNaN(parsedAltitude)
+			? `Approx. ${Math.round(parsedAltitude)} m elevation → run ${recommendedMinutes} minutes at 15 psi.`
+			: `Default guidance: run ${baseCycleMinutes} minutes at 15 psi, then ensure media fully solidifies before use.`;
+
+	async function estimateAltitude() {
+		if (!browser) return;
+
+		const query = locationInput.trim();
+		if (!query) {
+			lookupStatus = 'Enter a city or region first.';
+			derivedAltitude = null;
+			return;
+		}
+
+		isFetchingAltitude = true;
+		lookupStatus = 'Estimating altitude...';
+
+		try {
+			const params = new URLSearchParams({
+				name: query,
+				count: '1',
+				language: 'en',
+				format: 'json'
+			});
+			const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?${params.toString()}`);
+
+			if (!response.ok) {
+				throw new Error('Network error');
+			}
+
+			const data = await response.json();
+
+			if (data?.results?.length) {
+				const result = data.results[0];
+				if (typeof result.elevation === 'number') {
+					derivedAltitude = result.elevation;
+					lookupStatus = `Estimated elevation for ${result.name}, ${result.country_code || ''}: ${Math.round(
+						derivedAltitude
+					)} m`;
+				} else {
+					derivedAltitude = null;
+					lookupStatus = 'Elevation not provided for this location.';
+				}
+			} else {
+				derivedAltitude = null;
+				lookupStatus = 'No matching locations found. Try a nearby city.';
+			}
+		} catch (error) {
+			console.error(error);
+			derivedAltitude = null;
+			lookupStatus = 'Altitude lookup failed. Please enter it manually if possible.';
+		} finally {
+			isFetchingAltitude = false;
+		}
+	}
+
+	function switchMode(mode) {
+		cycleMode = mode;
+		if (mode === 'location') {
+			altitudeInput = '';
+		} else {
+			derivedAltitude = null;
+			lookupStatus = '';
+		}
+	}
+
+	function handleLocationSubmit(event) {
+		event.preventDefault();
+		estimateAltitude();
+	}
 </script>
 
 <svelte:head>
@@ -237,6 +331,64 @@
 				<li>Pressure: 15 psi</li>
 				<li>Time: 15-20 minutes</li>
 			</ul>
+			<p class="microcopy">
+				Most growers autoclave media the day before and let it sit 40–60 minutes in a hood or SAB until the agar fully solidifies; if you’re using an Instant Pot, verify the pressure it reaches and adjust sterilization time for your altitude before plating.
+			</p>
+			<div class="cycle-tool">
+				<p><strong>Altitude-aware cycle helper</strong></p>
+				<p class="microcopy">{recommendationText}</p>
+				<div class="mode-toggle" role="tablist" aria-label="Cycle adjustment mode">
+					<button
+						type="button"
+						class:active={cycleMode === 'location'}
+						on:click={() => switchMode('location')}
+					>
+						Use Location
+					</button>
+					<button
+						type="button"
+						class:active={cycleMode === 'altitude'}
+						on:click={() => switchMode('altitude')}
+					>
+						I Know My Altitude
+					</button>
+				</div>
+
+				{#if cycleMode === 'location'}
+					<form class="input-group" on:submit|preventDefault={handleLocationSubmit}>
+						<label for="location-input">City or Region</label>
+						<div class="input-row">
+							<input
+								class="compact-input"
+								style="height: 36px; line-height: 36px; padding: 0 12px;"
+								id="location-input"
+								type="text"
+								placeholder="e.g., Denver, CO"
+								bind:value={locationInput}
+							/>
+							<button type="submit" disabled={isFetchingAltitude}>
+								{isFetchingAltitude ? 'Estimating…' : 'Estimate Altitude'}
+							</button>
+						</div>
+					</form>
+					{#if lookupStatus}
+						<p class="microcopy status">{lookupStatus}</p>
+					{/if}
+				{:else}
+					<div class="input-group">
+						<label for="altitude-input">Altitude (meters above sea level)</label>
+						<input
+							class="compact-input"
+							style="height: 36px; line-height: 36px; padding: 0 12px;"
+							id="altitude-input"
+							type="number"
+							placeholder="Enter approximate meters"
+							bind:value={altitudeInput}
+							min="0"
+						/>
+					</div>
+				{/if}
+			</div>
 			<p><strong>Storage:</strong></p>
 			<ul>
 				<li>Cool to room temperature before handling</li>
@@ -443,6 +595,151 @@
 	@media (max-width: 768px) {
 		.comparison {
 			grid-template-columns: 1fr;
+		}
+	}
+	
+	.content :global(.timeline-notes) {
+		color: #333;
+	}
+
+	.content :global(.microcopy) {
+		font-size: 14px;
+		color: #666;
+	}
+	
+	.content :global(table) {
+		font-size: 15px;
+		margin: 28px 0;
+	}
+	
+	.cycle-tool {
+		margin: 24px 0;
+		padding: 20px;
+		border: 1px solid #e5e5e5;
+		border-radius: 12px;
+		background: #fafafa;
+	}
+
+	.mode-toggle {
+		display: inline-flex;
+		border: 1px solid #ddd;
+		border-radius: 999px;
+		overflow: hidden;
+		margin: 12px 0 16px;
+	}
+
+	.mode-toggle button {
+		padding: 8px 16px;
+		font-size: 14px;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		color: #555;
+		transition: background 0.2s ease, color 0.2s ease;
+	}
+
+	.mode-toggle button.active {
+		background: #111;
+		color: #fff;
+	}
+
+	.mode-toggle button:not(.active):hover {
+		background: #f0f0f0;
+	}
+
+	.input-group {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+		margin-bottom: 12px;
+	}
+
+	.input-group label {
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+		text-transform: uppercase;
+		color: #555;
+	}
+
+	.input-row {
+		display: flex;
+		gap: 8px;
+		align-items: stretch;
+		flex-wrap: wrap;
+	}
+	
+	.input-group input {
+		border-radius: 10px;
+		border: 1px solid #d1d1d1;
+		font-size: 15px;
+	}
+	
+	.input-row input {
+		flex: 1 1 220px;
+		min-width: 0;
+	}
+	
+	.compact-input {
+		padding: 0 12px !important;
+		height: 36px !important;
+		line-height: 36px;
+		box-sizing: border-box;
+	}
+
+	.input-group button {
+		flex: 0 0 auto;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0 16px;
+		border-radius: 10px;
+		border: none;
+		font-size: 14px;
+		font-weight: 600;
+		background: #111;
+		color: #fff;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+		height: 36px;
+	}
+
+	.input-group button[disabled] {
+		opacity: 0.6;
+		cursor: default;
+	}
+
+	.status {
+		margin-top: 4px;
+		color: #111;
+	}
+
+	@media (max-width: 600px) {
+		.input-row {
+			flex-direction: column;
+			align-items: stretch;
+		}
+		
+		.input-group button {
+			width: 100%;
+		}
+	}
+	
+	/* Remove default number input spinners for consistency */
+	.input-group input[type='number']::-webkit-outer-spin-button,
+	.input-group input[type='number']::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+	
+	.input-group input[type='number'] {
+		-moz-appearance: textfield;
+	}
+	
+	@media (min-width: 1921px) {
+		.content :global(th),
+		.content :global(td) {
+			padding: 16px 14px;
 		}
 	}
 </style>
